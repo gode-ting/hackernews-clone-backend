@@ -60,7 +60,7 @@
             <url>https://repo.spring.io/libs-release</url>
         </repository>
         <repository>
-        <id>choir-repo</id>
+        <id>daef-repo</id>
         <name>Daef Repo</name>
         <url>http://46.101.190.192:8082/artifactory/libs-release-local</url>
       </repository>
