@@ -1,14 +1,12 @@
 package com.daef.hackernewsclonebackend;
 
-import com.daef.models.Article;
-import com.daef.repositories.ArticleRepository;
+import com.daef.models.Post;
+import com.daef.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.stereotype.Repository;
 
 @EnableMongoRepositories ("com.daef.repositories")
 
@@ -16,7 +14,7 @@ import org.springframework.stereotype.Repository;
 public class HackernewsCloneBackendApplication implements CommandLineRunner  {
 
     @Autowired
-	private ArticleRepository repository;
+	private PostRepository repository;
     
     
 	public static void main(String[] args) {
@@ -29,21 +27,21 @@ public class HackernewsCloneBackendApplication implements CommandLineRunner  {
 		repository.deleteAll();
 
 		// save a couple of articles
-		repository.save(new Article("google.dk", "Google's new website!"));
-		repository.save(new Article("facebook.com", "Facebook new website!"));
+		repository.save(new Post("Charlie", "story","aioCQsy3E","Student Guide 101","Cool stuff", -1, 2));
+		repository.save(new Post("Frank", "story","aioCQsy3E","Student Guide 102","Bad  stuff", -1, 2));
 
 		// fetch all articles
 		System.out.println("Articles found with findAll():");
 		System.out.println("-------------------------------");
-		for (Article customer : repository.findAll()) {
-			System.out.println(customer);
-		}
+                repository.findAll().forEach((post) -> {
+                    System.out.println(post);
+        });
 		System.out.println();
 
 		// fetch an individual article
-		System.out.println("Article found with findByHeadline('Facebook new website!'):");
+		System.out.println("Post found with findPostByUser(\"Charlie\")");
 		System.out.println("--------------------------------");
-		System.out.println(repository.findByHeadline("Facebook new website!"));
+		System.out.println(repository.findPostByUser("Charlie"));
 
 
 	}

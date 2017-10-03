@@ -11,8 +11,6 @@
     <name>hackernews-clone-backend</name>
     <description>hackernews-clone-backend</description>
 
-    
-
 
 
     <parent>
@@ -26,6 +24,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+         <start-class>com.daef.hackernewsclonebackend.HackernewsCloneBackendApplication</start-class>
         <java.version>1.8</java.version>
     </properties>
 
@@ -60,10 +59,10 @@
             <url>https://repo.spring.io/libs-release</url>
         </repository>
         <repository>
-        <id>daef-repo</id>
-        <name>Daef Repo</name>
-        <url>http://46.101.190.192:8082/artifactory/libs-release-local</url>
-      </repository>
+            <id>daef-repo</id>
+            <name>Daef Repo</name>
+            <url>http://46.101.190.192:8082/artifactory/libs-release-local</url>
+        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
