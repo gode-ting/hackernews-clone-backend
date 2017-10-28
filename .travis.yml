@@ -21,11 +21,7 @@ env:
     - REMOTE_HOST=46.101.190.192
     - PORT=8080
 
+before_install:
+  - chmod +x mvnw
 
 install: true
-
-script: ./mvnw clean install
-
-cache:
-  directories:
-  - $HOME/.m2

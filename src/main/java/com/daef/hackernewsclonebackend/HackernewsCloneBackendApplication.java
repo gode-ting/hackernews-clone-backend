@@ -34,14 +34,14 @@ public class HackernewsCloneBackendApplication implements CommandLineRunner  {
 		System.out.println("Articles found with findAll():");
 		System.out.println("-------------------------------");
                 repository.findAll().forEach((post) -> {
-                    System.out.println(post);
+                    System.out.println(post.PostText);
         });
 		System.out.println();
 
 		// fetch an individual article
 		System.out.println("Post found with findPostByUser(\"Charlie\")");
 		System.out.println("--------------------------------");
-		System.out.println(repository.findPostByUser("Charlie"));
+		System.out.println(repository.findPostByUserName("Charlie"));
 
 
 	}
