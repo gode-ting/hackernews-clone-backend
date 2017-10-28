@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public class HackernewsCloneBackendApplication implements CommandLineRunner  {
 
     @Autowired
-	private PostRepository repository;
+    private PostRepository repository;
     
     
 	public static void main(String[] args) {

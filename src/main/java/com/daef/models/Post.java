@@ -4,16 +4,18 @@
  * and open the template in the editor.
  */
 package com.daef.models;
+
 import org.springframework.data.annotation.Id;
+
 /**
  *
  * @author abj
  */
-public class Post {  
-    @Id
+public class Post {
+       @Id
     public String id;
     
-    public String User;
+    public String Username;
     
     public String PostType;
     
@@ -28,10 +30,9 @@ public class Post {
     public int HanesstID; 
      
     
-    public Post(){}
 
     public Post(String username, String post_type, String pwd_hash, String post_title, String post_text, int post_parent, int hanesst_id) {
-        this.User = username;
+        this.Username = username;
         this.PostType = post_type;
         this.Pwd = pwd_hash;
         this.PostTitle = post_title;
@@ -41,6 +42,5 @@ public class Post {
      
     }
     
-  
-    
+
 }
