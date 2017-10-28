@@ -15,7 +15,7 @@ public class Post {
        @Id
     public String id;
     
-    public String Username;
+    public String userName;
     
     public String PostType;
     
@@ -31,14 +31,14 @@ public class Post {
      
     
 
-    public Post(String username, String post_type, String pwd_hash, String post_title, String post_text, int post_parent, int hanesst_id) {
-        this.Username = username;
-        this.PostType = post_type;
-        this.Pwd = pwd_hash;
-        this.PostTitle = post_title;
-        this.PostText = post_text;
-        this.PostParent = post_parent;
-        this.HanesstID = hanesst_id;
+    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, int PostParent, int HanesstID) {
+        this.userName = userName;
+        this.PostType = PostType;
+        this.Pwd = Pwd;
+        this.PostTitle = PostTitle;
+        this.PostText = PostText;
+        this.PostParent = PostParent;
+        this.HanesstID = HanesstID;
      
     }
     
