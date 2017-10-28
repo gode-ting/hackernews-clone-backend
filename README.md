@@ -106,7 +106,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/common-applicatio
 
 TODO: Implement SQL DB
 
-## Implementing JWT Authentication on Spring Boot API's
+## Implementing JWT authentication and authorization on Spring Boot API's
 
 In this section we will explain how we can esnure our endpoints in the most secure way using authentication tokens. Everything you will see here is inspired by this article: https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot/
 
