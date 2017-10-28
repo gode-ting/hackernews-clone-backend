@@ -1,0 +1,31 @@
+sudo: required
+
+language: java
+jdk: oraclejdk8
+
+services:
+  - docker
+
+addons:
+  ssh_known_hosts:
+    - 46.101.190.192
+
+branches:
+  only:
+    - test
+
+env:
+  global:
+    - REMOTE_APP_DIR = /var/www/hackernewsclone
+    - REMOTE_USER=builder
+    - REMOTE_HOST=46.101.190.192
+    - PORT=8080
+
+
+install: true
+
+script: ./mvnw clean install
+
+cache:
+  directories:
+  - $HOME/.m2
