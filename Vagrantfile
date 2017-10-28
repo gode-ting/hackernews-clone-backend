@@ -35,16 +35,16 @@ Vagrant.configure("2") do |config|
   
   
   # for mongoDB server
-  config.vm.network "forwarded_port", guest: 27017, host: 27017
+  config.vm.network "forwarded_port", guest: 27017, host: 27018
   # config.vm.network "forwarded_port", guest: 27018, host: 27018
   # config.vm.network "forwarded_port", guest: 27019, host: 27019
   config.vm.network "forwarded_port", guest: 28017, host: 28017
   # for MySQL DB server
-  config.vm.network "forwarded_port", guest: 3306, host: 3306
+  config.vm.network "forwarded_port", guest: 3306, host: 3307
 
  
   # config.vm.network "private_network", type: "dhcp"
-
+	config.vm.network "private_network", ip: "192.168.30.20"
   # config.vm.network "public_network"
 
 
@@ -53,9 +53,8 @@ Vagrant.configure("2") do |config|
     # vb.gui = true
 
     # Customize the amount of memory on the VM:
-
     vb.name = "dbprod"
-	vb.memory =  256
+	
   end
 
 
@@ -65,23 +64,16 @@ Vagrant.configure("2") do |config|
     sudo apt-get -y install mongodb-server
    
     sudo mkdir -p /data/db
+
     # TODO:
     # /etc/mongodb.conf modify bind_ip line to 0.0.0.0 and restart server
     sudo sed -i '/bind_ip = / s/127.0.0.1/0.0.0.0/' /etc/mongodb.conf
     # sudo systemctl restart mongod
     sudo service mongodb restart
     # sudo mongod
-    sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password pwd'
-    sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password pwd'
-    sudo apt-get update
-    sudo apt-get install -y mysql-server mysql-client
-    sudo chmod a+w /etc/mysql/mysql.cnf
-    sudo echo "skip-external-locking" >> /etc/mysql/mysql.cnf
-    sudo echo "bind-address=0.0.0.0" >> /etc/mysql/mysql.cnf
-    sudo /etc/init.d/mysql restart
-    mysql -u root -ppwd -e "create user 'root'@'10.0.2.2' identified by 'pwd'; grant all privileges on *.* to 'root'@'10.0.2.2' with grant option; flush privileges;"
-    sudo /etc/init.d/mysql restart
+
     # sudo service mysql restart
     # sudo /etc/init.d/mysql restart
+	
   SHELL
 end
