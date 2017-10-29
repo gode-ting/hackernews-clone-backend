@@ -5,10 +5,16 @@
  */
 package com.daef.repositories;
 
+import com.daef.models.User;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+//import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author emilgras
  */
-public interface UserRepository {
+@Repository
+public interface UserRepository extends MongoRepository<User, String> {
     
 }
