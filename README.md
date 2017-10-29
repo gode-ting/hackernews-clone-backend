@@ -34,7 +34,7 @@ $ cd hackernews-clone-backend
 ## Running the project
 
 ```sh
-vagrant up
+$ vagrant up
 ```  
 Next, run the main project in NetBenas
 
