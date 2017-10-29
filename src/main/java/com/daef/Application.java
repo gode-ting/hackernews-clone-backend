@@ -1,4 +1,4 @@
-package com.daef.application;
+package com.daef;
 
 import com.daef.models.Post;
 import com.daef.repositories.PostRepository;
@@ -6,21 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableMongoRepositories("com.daef.repositories")
 
 
-@SpringBootApplication(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
+@SpringBootApplication//(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
 public class Application implements CommandLineRunner {
 
     @Autowired
     private PostRepository repository;
     
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
-
+    
     @Override
     public void run(String... args) throws Exception {
 
@@ -44,4 +47,9 @@ public class Application implements CommandLineRunner {
         System.out.println(repository.findPostByUserName("Charlie").PostText);
 
     }
+    
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+    
 }
