@@ -5,13 +5,14 @@
  */
 package com.daef.security;
 
-import com.daef.models.User;
+import com.daef.models.ApplicationUser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,7 @@ import static com.daef.security.SecurityConstants.EXPIRATION_TIME;
 import static com.daef.security.SecurityConstants.HEADER_STRING;
 import static com.daef.security.SecurityConstants.SECRET;
 import static com.daef.security.SecurityConstants.TOKEN_PREFIX;
+import org.springframework.security.core.userdetails.User;
 
 /**
  *
@@ -43,9 +45,10 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req,
             HttpServletResponse res) throws AuthenticationException {
+        System.out.println("--------------- authentication ---------------");
         try {
-            User creds = new ObjectMapper()
-                    .readValue(req.getInputStream(), User.class);
+            ApplicationUser creds = new ObjectMapper()
+                    .readValue(req.getInputStream(), ApplicationUser.class);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -63,7 +66,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             HttpServletResponse res,
             FilterChain chain,
             Authentication auth) throws IOException, ServletException {
-
+        System.out.println("--------------- authentication (success) ---------------");
         String token = Jwts.builder()
                 .setSubject(((User) auth.getPrincipal()).getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
@@ -71,5 +74,4 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .compact();
         res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
     }
-
 }

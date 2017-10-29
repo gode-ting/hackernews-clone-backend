@@ -5,18 +5,17 @@
  */
 package com.daef.repositories;
 
-import com.daef.models.User;
+import com.daef.models.ApplicationUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-//import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author emilgras
  */
 @Repository
-public interface UserRepository extends MongoRepository<User, String> {
+public interface ApplicationUserRepository extends MongoRepository<ApplicationUser, String> {
     
-    User findByUsername(String username);
+    ApplicationUser findByUsername(String username);
     
 }

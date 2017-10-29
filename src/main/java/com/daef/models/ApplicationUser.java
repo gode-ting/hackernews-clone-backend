@@ -5,19 +5,26 @@
  */
 package com.daef.models;
 
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
 
 /**
  *
  * @author emilgras
  */
-public class User {
+public class ApplicationUser {
+    
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private long id;
     private String username;
     private String password;
 
-    public User(String username, String password) {
+    public ApplicationUser() {
+    }
+    
+    public ApplicationUser(String username, String password) {
         this.username = username;
         this.password = password;
     }
