@@ -7,10 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @EnableMongoRepositories("com.daef.repositories")
+
 
 @SpringBootApplication(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
 @RestController
@@ -19,10 +18,12 @@ public class Application implements CommandLineRunner {
     @Autowired
     private PostRepository repository;
 
-    @RequestMapping("/")
-    public String home() {
-        return "Hello From Hackernews API";
-    }
+//    @RequestMapping("/")
+//    public String home() {
+//        return "Hello From Hackernews API";
+//    }
+    
+    
     
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
