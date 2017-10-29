@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package security;
+package com.daef.security;
 
 import io.jsonwebtoken.Jwts;
 import java.io.IOException;
@@ -18,9 +18,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-import static security.SecurityConstants.HEADER_STRING;
-import static security.SecurityConstants.SECRET;
-import static security.SecurityConstants.TOKEN_PREFIX;
+import static com.daef.security.SecurityConstants.HEADER_STRING;
+import static com.daef.security.SecurityConstants.SECRET;
+import static com.daef.security.SecurityConstants.TOKEN_PREFIX;
 
 /**
  *

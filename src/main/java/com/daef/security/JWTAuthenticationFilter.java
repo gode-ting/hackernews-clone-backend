@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package security;
+package com.daef.security;
 
 import com.daef.models.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,10 +23,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static security.SecurityConstants.EXPIRATION_TIME;
-import static security.SecurityConstants.HEADER_STRING;
-import static security.SecurityConstants.SECRET;
-import static security.SecurityConstants.TOKEN_PREFIX;
+import static com.daef.security.SecurityConstants.EXPIRATION_TIME;
+import static com.daef.security.SecurityConstants.HEADER_STRING;
+import static com.daef.security.SecurityConstants.SECRET;
+import static com.daef.security.SecurityConstants.TOKEN_PREFIX;
 
 /**
  *
