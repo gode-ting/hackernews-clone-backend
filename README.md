@@ -23,7 +23,7 @@ but there are extensions for building web applications on top of the Java EE (En
 
 ## Installation
 
-1. ```sh 
+```sh 
 $ git clone https://github.com/gode-ting/hackernews-clone-backend.git
 ```
 
