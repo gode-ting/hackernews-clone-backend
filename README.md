@@ -21,6 +21,18 @@ In this project we are using Spring Framework
 The Spring Framework is an application framework and inversion of control container for the Java platform. The framework's core features can be used by any Java application,
 but there are extensions for building web applications on top of the Java EE (Enterprise Edition) platform.
 
+## Installetion
+
+1. ```sh
+  $ git clone https://github.com/gode-ting/hackernews-clone-backend.git
+  ```
+2. $ cd hackernews-clone-backend
+3. 
+
+## Running the project
+
+1. 
+
 ## Accessing Data with MongoDB
 
 Define a simple model:
