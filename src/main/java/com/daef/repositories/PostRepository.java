@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package com.daef.repositories;
-import com.daef.models.Post;
 
+
+import com.daef.models.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

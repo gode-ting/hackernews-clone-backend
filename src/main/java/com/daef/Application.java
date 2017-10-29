@@ -32,7 +32,8 @@ public class Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
         user.deleteAll();
         repository.deleteAll();
-//        user.save(new ApplicationUser("admin", "password"));
+        user.save(new ApplicationUser("admin", "password"));
+        user.save(new ApplicationUser("admin2", "password"));
         // save a couple of articles
         repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff", -1, 2));
         repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff", -1, 2));

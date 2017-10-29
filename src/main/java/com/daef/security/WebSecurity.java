@@ -32,12 +32,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http./*cors().and().csrf().disable().*/authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/**").permitAll()
-                .antMatchers(HttpMethod.PUT, "/api/**").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/users/*").permitAll()
+        http.cors().and().csrf().disable().authorizeRequests()
+//                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
+//                .antMatchers(HttpMethod.POST, "/api/**").permitAll()
+//                .antMatchers(HttpMethod.PUT, "/api/**").permitAll()
+//                .antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/users/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
