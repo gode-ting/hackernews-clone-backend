@@ -23,21 +23,23 @@ but there are extensions for building web applications on top of the Java EE (En
 
 ## Installation
 
-```sh 
+1. ```sh 
 $ git clone https://github.com/gode-ting/hackernews-clone-backend.git
 ```
 
-```sh
+2. ```sh
 $ cd hackernews-clone-backend
 ```
    
 ## Running the project
 
-```sh
+1. ```sh
 $ vagrant up
 ```  
 
-Next, run the main project in NetBenas
+2. Next, run the main project in NetBenas  
+
+3. Go to `localhost:8080`
 
 ## Accessing Data with MongoDB
 
