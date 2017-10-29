@@ -1,5 +1,6 @@
 package com.daef;
 
+import com.daef.models.ApplicationUser;
 import com.daef.models.Post;
 import com.daef.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
         user.deleteAll();
         repository.deleteAll();
-
+//        user.save(new ApplicationUser("admin", "password"));
         // save a couple of articles
         repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff", -1, 2));
         repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff", -1, 2));
@@ -47,7 +48,7 @@ public class Application implements CommandLineRunner {
         // fetch an individual article
         System.out.println("Post found with findPostByUser(\"Charlie\")");
         System.out.println("--------------------------------");
-        System.out.println(repository.findPostByUserName("Charlie").PostText);
+        System.out.println(repository.findPostByUserName("Charlie").id);
 
     }
     

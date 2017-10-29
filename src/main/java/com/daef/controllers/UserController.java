@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.daef.repositories.ApplicationUserRepository;
+import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  *
@@ -28,6 +29,11 @@ public class UserController {
     public UserController(ApplicationUserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+    }
+    
+    @GetMapping()
+    public String hello() {
+        return "hello";
     }
     
     @PostMapping("/signup")
