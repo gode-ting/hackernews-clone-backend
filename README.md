@@ -37,7 +37,7 @@ $ cd hackernews-clone-backend
 $ vagrant up
 ```  
 
-Next, run the main project in NetBenas
+Next, run the main project in NetBenas and in your browser go to `http://localhost:8080`
 
 ## Accessing Data with MongoDB
 
