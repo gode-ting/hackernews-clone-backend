@@ -10,8 +10,9 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @EnableMongoRepositories("com.daef.repositories")
 
-@SpringBootApplication(scanBasePackages = {"com.daef.repositories"})
-//@RestController
+
+@SpringBootApplication(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
+@RestController
 public class Application implements CommandLineRunner {
 
     @Autowired
