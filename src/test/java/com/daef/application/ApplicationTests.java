@@ -1,4 +1,4 @@
-package com.daef.hackernewsclonebackend;
+package com.daef.application;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

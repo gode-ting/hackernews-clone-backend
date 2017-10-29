@@ -1,4 +1,4 @@
-package com.daef.hackernewsclonebackend;
+package com.daef.application;
 
 import com.daef.models.Post;
 import com.daef.repositories.PostRepository;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication(scanBasePackages = {"com.daef.repositories"})
 @RestController
-public class HackernewsCloneBackendApplication implements CommandLineRunner {
+public class Application implements CommandLineRunner {
 
     @Autowired
     private PostRepository repository;
@@ -25,7 +25,7 @@ public class HackernewsCloneBackendApplication implements CommandLineRunner {
     }
     
     public static void main(String[] args) {
-        SpringApplication.run(HackernewsCloneBackendApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Override
