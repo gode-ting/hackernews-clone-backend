@@ -7,6 +7,8 @@ package controllers;
 
 import com.daef.models.Post;
 import com.daef.repositories.PostRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,14 +20,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/post")
 public class PostController {
+    
+    @Autowired
     private PostRepository repository;
     
     
     @RequestMapping(method = RequestMethod.GET)
-    public String getAllPosts(){
-      
-        return "Hello";
-       //return (Post) repository.findAll();
+    public List<Post> getAllPosts(){
+      List<Post> posts = repository.findAll();
+        //return "Hello";
+       return posts;
      
     }
     
