@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @EnableMongoRepositories("com.daef.repositories")
 
-@SpringBootApplication(scanBasePackages = {"com.daef.repositories"})
+@SpringBootApplication(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
 @RestController
 public class Application implements CommandLineRunner {
 

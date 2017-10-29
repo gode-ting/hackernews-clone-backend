@@ -5,10 +5,28 @@
  */
 package controllers;
 
+import com.daef.models.Post;
+import com.daef.repositories.PostRepository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  *
  * @author emilgras
  */
+@RestController
+@RequestMapping("/api/post")
 public class PostController {
+    private PostRepository repository;
+    
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public String getAllPosts(){
+      
+        return "Hello";
+       //return (Post) repository.findAll();
+     
+    }
     
 }
