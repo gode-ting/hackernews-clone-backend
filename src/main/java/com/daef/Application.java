@@ -1,4 +1,4 @@
-package com.daef.application;
+package com.daef;
 
 import com.daef.models.Post;
 import com.daef.repositories.PostRepository;
@@ -13,7 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableMongoRepositories("com.daef.repositories")
 
 
-@SpringBootApplication(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
+@SpringBootApplication//(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
 public class Application implements CommandLineRunner {
 
     @Autowired
