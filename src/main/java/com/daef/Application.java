@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.daef.repositories.ApplicationUserRepository;
 
 @EnableMongoRepositories("com.daef.repositories")
 
@@ -18,6 +19,8 @@ public class Application implements CommandLineRunner {
 
     @Autowired
     private PostRepository repository;
+    @Autowired
+    private ApplicationUserRepository user;
     
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -26,7 +29,7 @@ public class Application implements CommandLineRunner {
     
     @Override
     public void run(String... args) throws Exception {
-
+        user.deleteAll();
         repository.deleteAll();
 
         // save a couple of articles
