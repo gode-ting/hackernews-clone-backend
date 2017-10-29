@@ -12,18 +12,10 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 
 @SpringBootApplication(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
-@RestController
 public class Application implements CommandLineRunner {
 
     @Autowired
     private PostRepository repository;
-
-//    @RequestMapping("/")
-//    public String home() {
-//        return "Hello From Hackernews API";
-//    }
-    
-    
     
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
