@@ -17,7 +17,7 @@ public class ApplicationUser {
     
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private long id;
+    private String id;
     private String username;
     private String password;
 
@@ -29,7 +29,7 @@ public class ApplicationUser {
         this.password = password;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 

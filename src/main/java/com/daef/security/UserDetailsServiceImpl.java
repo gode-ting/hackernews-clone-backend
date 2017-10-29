@@ -36,7 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
      * @return
      * @throws UsernameNotFoundException
      *
-     * When a user tries to authenticate, this method receives the username,
+     * When a user tries to authenticate (login), this method receives the username,
      * searches the database for a record containing it, and (if found) returns
      * an instance of User. The properties of this instance (username and
      * password) are then checked against the credentials passed by the user in
