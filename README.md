@@ -22,10 +22,10 @@ The Spring Framework is an application framework and inversion of control contai
 but there are extensions for building web applications on top of the Java EE (Enterprise Edition) platform.
 
 ## Installetion
-1. 
-```sh 
-$ git clone https://github.com/gode-ting/hackernews-clone-backend.git
-```
+ 
+1. ```sh 
+   $ git clone https://github.com/gode-ting/hackernews-clone-backend.git
+   ```
 
 2. ```sh
   $ cd hackernews-clone-backend
