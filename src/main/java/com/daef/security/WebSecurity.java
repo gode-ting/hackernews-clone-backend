@@ -6,6 +6,7 @@
 package com.daef.security;
 
 import static com.daef.security.SecurityConstants.SIGN_UP_URL;
+import java.util.Arrays;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -51,11 +52,18 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
+    
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        // very important in order to make response headers exposed in browser
+        configuration.applyPermitDefaultValues();
+        configuration.addExposedHeader("Authorization");
+        // very important in order to make response headers exposed in browser
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
 }

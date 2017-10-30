@@ -17,6 +17,7 @@ import org.json.simple.JSONObject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -40,6 +41,7 @@ public class UserController {
     public String hello() {
         return "hello";
     }
+    
     
     @PostMapping("/signup")
     public ResponseEntity<JSONObject> signUp(@RequestBody ApplicationUser user) {
