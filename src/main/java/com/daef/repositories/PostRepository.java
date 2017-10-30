@@ -16,12 +16,12 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface PostRepository extends MongoRepository<Post, String> {
+public interface PostRepository extends MongoRepository<Post, String>, PostInterface{
 
    
     
     
-    
+    public void getAllPostByParentID(int id);
     
     public Post findPostByUserName(String userName);
    

@@ -37,7 +37,6 @@ public class Application implements CommandLineRunner {
         // save a couple of articles
         repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff", -1, 10));
         repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff", -1, 2));
-
         // fetch all articles
         System.out.println("Articles found with findAll():");
         System.out.println("-------------------------------");
@@ -51,6 +50,8 @@ public class Application implements CommandLineRunner {
         System.out.println("--------------------------------");
         System.out.println(repository.findPostByUserName("Charlie").id);
 
+        System.out.println("----------");
+        repository.getAllPostByParentID(-1);
     }
     
     public static void main(String[] args) {
