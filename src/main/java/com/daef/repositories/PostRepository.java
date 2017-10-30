@@ -13,9 +13,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
-@Repository
+@RepositoryRestResource(collectionResourceRel = "post", path = "post")
 public interface PostRepository extends MongoRepository<Post, String> {
 
    
