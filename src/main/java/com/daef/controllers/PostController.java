@@ -44,13 +44,13 @@ public class PostController {
     //TESTING
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> createUser(@RequestBody Post post,UriComponentsBuilder ucBuilder) {
-        System.out.println("Creating Post " + post.userName);
+        //System.out.println("Creating Post " + post.userName);
  
         repository.save(post);
  
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/post/{id}").buildAndExpand(post.id).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
    
     //READ
