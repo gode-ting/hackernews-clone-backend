@@ -45,6 +45,7 @@ Vagrant.configure("2") do |config|
  
   # config.vm.network "private_network", type: "dhcp"
 	config.vm.network "private_network", ip: "192.168.30.20"
+ 
   # config.vm.network "public_network"
 
 
