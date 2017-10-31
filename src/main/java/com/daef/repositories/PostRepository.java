@@ -7,6 +7,7 @@ package com.daef.repositories;
 
 
 import com.daef.models.Post;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -21,7 +22,7 @@ public interface PostRepository extends MongoRepository<Post, String>, PostInter
    
     
     
-    public void getAllPostByParentID(int id);
+    public JSONObject getAllChildPostByID(int id);
     
     public Post findPostByUserName(String userName);
    

@@ -5,10 +5,12 @@
  */
 package com.daef.repositories;
 
+import org.json.simple.JSONObject;
+
 /**
  *
  * @author Frederik
  */
 public interface PostInterface {
-    public void getAllPostByParentID(int id);
+    public JSONObject getAllChildPostByID(int id);
 }
