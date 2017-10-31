@@ -19,28 +19,28 @@ public class Post {
     @Id
     public String id;
     
-    @JsonProperty("username")
+//    @JsonProperty("username")
     public String userName;
     
-    @JsonProperty("post_type")
+//    @JsonProperty("post_type")
     public String PostType;
     
-    @JsonProperty("pwd_hash")
+//    @JsonProperty("pwd_hash")
     public String Pwd;
     
-    @JsonProperty("post_title")
+//    @JsonProperty("post_title")
     public String PostTitle;
     
-    @JsonProperty("post_text")
+//    @JsonProperty("post_text")
     public String PostText;
     
-    @JsonProperty("post_url")
+//    @JsonProperty("post_url")
     public String URL;
     
-    @JsonProperty("post_parent")
+//    @JsonProperty("post_parent")
     public int PostParent;
     
-    @JsonProperty("hanesst_id")
+//    @JsonProperty("hanesst_id")
     public int HanesstID; 
      
     
@@ -56,17 +56,17 @@ public class Post {
 //     
 //    }
     
-    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, String URL, int PostParent, int HanesstID) {
-        this.userName = userName;
-        this.PostType = PostType;
-        this.Pwd = Pwd;
-        this.PostTitle = PostTitle;
-        this.PostText = PostText;
-        this.URL = URL;
-        this.PostParent = PostParent;
-        this.HanesstID = HanesstID;
-     
-    }
+//    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, String URL, int PostParent, int HanesstID) {
+//        this.userName = userName;
+//        this.PostType = PostType;
+//        this.Pwd = Pwd;
+//        this.PostTitle = PostTitle;
+//        this.PostText = PostText;
+//        this.URL = URL;
+//        this.PostParent = PostParent;
+//        this.HanesstID = HanesstID;
+//     
+//    }
 
     public Post(){
         
