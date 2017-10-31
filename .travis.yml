@@ -24,6 +24,7 @@ before_install:
 - mv travis_rsa  ~/.ssh/id_rsa
 
 install:
+- mvn -N io.takari:maven:wrapper
 - "./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 after_success:
 - docker build -t abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER" .
