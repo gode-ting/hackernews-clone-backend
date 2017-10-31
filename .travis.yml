@@ -32,3 +32,6 @@ after_success:
 - if [ "$TRAVIS_BRANCH" == "test" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   docker push abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER"; docker logout;
   fi
+
+deploy:
+- ssh builder@46.101.190.192 "./deploy2.sh $"TRAVIS_BUILD_NUMBER" abjdocker"  
