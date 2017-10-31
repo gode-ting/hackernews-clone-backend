@@ -20,7 +20,8 @@ public class ApplicationUser {
     private String id;
     private String username;
     private String password;
-
+    private int karma;
+    
     public ApplicationUser() {
     }
     
@@ -33,6 +34,14 @@ public class ApplicationUser {
         return id;
     }
 
+    public int getKarma() {
+        return karma;
+    }
+
+    public void setKarma(int karma) {
+        this.karma = karma;
+    }
+    
     public String getUsername() {
         return username;
     }

@@ -5,6 +5,7 @@
  */
 package com.daef.repositories;
 
+import com.daef.models.ApplicationUser;
 import com.daef.models.Post;
 import com.mongodb.WriteResult;
 import java.util.ArrayList;
@@ -121,4 +122,24 @@ public class PostRepositoryImpl implements PostInterface {
         return result;
     }
 
+    @Override
+    public void upvotePost(int id, String username){
+        
+        //find the post by id
+         Query query = new Query(Criteria.where("hanesstID").is(id));
+         Post p = mongoTemplate.findOne(query, Post.class);
+         
+         //find the user by hes username
+         Query query2 = new Query(Criteria.where("username").is(username));
+         ApplicationUser user = mongoTemplate.findOne(query2, ApplicationUser.class);
+         
+         //check if the user already upvoted this post
+         if(!p.upvotedBy.contains(user.getUsername())){
+             user.setKarma(user.getKarma() + 1);
+             p.upvotedBy.add(user.getUsername());
+         }
+         
+         
+    }
+    
 }
