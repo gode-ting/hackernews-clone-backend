@@ -43,6 +43,7 @@ public class PostController {
         System.out.println("page: " + page);
         PageRequest request = new PageRequest(page - 1, PAGE_SIZE, Sort.Direction.ASC, "timestamp");    
         List<Post> posts = repository.findAll(request).getContent();
+        System.out.println("POSTS: " + posts.get(0).toString());
         return new ResponseEntity<>(posts, new HttpHeaders(), HttpStatus.OK);
     }
     
@@ -51,9 +52,7 @@ public class PostController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> createUser(@RequestBody Post post,UriComponentsBuilder ucBuilder) {
         //System.out.println("Creating Post " + post.userName);
- 
         repository.save(post);
- 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/post/{id}").buildAndExpand(post.id).toUri());
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
