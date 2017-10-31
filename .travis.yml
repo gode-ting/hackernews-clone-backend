@@ -27,15 +27,9 @@ install:
 - mvn -N io.takari:maven:wrapper
 - "./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 after_success:
-- docker build -t abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER" .
+- docker build -t abjdocker/hackernewscloneserver:101 .
 - set +x
 - if [ "$TRAVIS_BRANCH" == "test" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  docker push abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER"; docker logout;
+  docker push abjdocker/hackernewscloneserver:101 docker logout;
   fi
-
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: ssh builder@46.101.190.192 "./deploy2.sh $"TRAVIS_BUILD_NUMBER" abjdocker"
-    on:
-      branch: test
+- sshpass -e ssh builder@46.101.190.192 "./deploy2.sh 101
