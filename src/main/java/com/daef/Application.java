@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.daef.repositories.ApplicationUserRepository;
+import org.json.simple.JSONObject;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 
@@ -42,11 +43,11 @@ public class Application implements CommandLineRunner {
         user.save(new ApplicationUser("admin", "password"));
         user.save(new ApplicationUser("admin2", "password"));
         // save a couple of articles
-        //repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", -1, 10));
-        //repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", -1, 2));
-        //repository.save(new Post("Fred", "comment", "aioCQsy3E", "", "Bad  stuff 1","", 10, 3));
-        //repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", 10, 4));
-        //repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", 4, 5));
+        repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", -1, 10));
+        repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", -1, 2));
+        repository.save(new Post("Fred", "comment", "aioCQsy3E", "", "Bad  stuff 1","", 10, 3));
+        repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", 10, 4));
+        repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", 4, 5));
           System.out.println("Up and running");
         // fetch all articles
 //        System.out.println("Articles found with findAll():");
@@ -57,7 +58,8 @@ public class Application implements CommandLineRunner {
 //        System.out.println();
 
         System.out.println("----------");
-        repository.getAllChildPostByID(10);
+        JSONObject o = repository.getAllChildPostByID(10);
+//        System.out.println(o.toJSONString());
     }
     
     public static void main(String[] args) {
