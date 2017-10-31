@@ -9,6 +9,8 @@ import com.daef.models.Post;
 import com.daef.repositories.PostRepository;
 import static constants.Constants.PAGE_SIZE;
 import java.util.List;
+import org.json.simple.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -46,6 +48,24 @@ public class PostController {
         System.out.println("POSTS: " + posts.get(0).toString());
         return new ResponseEntity<>(posts, new HttpHeaders(), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/allComments", method = RequestMethod.GET)
+    public ResponseEntity<JSONObject> getComments() {
+        JSONObject obj = repository.getAllComments();
+        System.out.println(obj.toJSONString());
+        return new ResponseEntity<>(obj, new HttpHeaders(), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/comments", method = RequestMethod.GET)
+    public ResponseEntity<JSONObject> getCommentsByID(@RequestParam("id") int id) {
+        System.out.println("id: " + id);
+        JSONObject obj = repository.getAllChildPostByID(id);
+        System.out.println(obj.toJSONString());
+        return new ResponseEntity<>(obj, new HttpHeaders(), HttpStatus.OK);
+    }
+    
+    
+    
     
     //CREATE
     //TESTING
