@@ -44,6 +44,8 @@ public class PostRepositoryImpl implements PostInterface {
             JSONObject o = recursiveCall(p);
             jsonArray.add(o);
         }
+        
+        //add the array to the result and return it
         result.put("Comments", jsonArray);
         
         return result;
@@ -51,6 +53,8 @@ public class PostRepositoryImpl implements PostInterface {
     
     private JSONObject recursiveCall(Post p){
         JSONObject o = new JSONObject();
+        
+        //set the posts variables to the JsonObject
         o.put("HanesstID", p.HanesstID);
         o.put("PostParent", p.PostParent);
         o.put("PostText", p.PostText);
@@ -60,14 +64,24 @@ public class PostRepositoryImpl implements PostInterface {
         o.put("id", p.id);
         o.put("userName", p.userName);
         
+        //get all the comments to the parent
         Query query = new Query(Criteria.where("PostParent").is(p.HanesstID));
+        
+        //put into a list
         List<Post> tmpList = mongoTemplate.find(query, Post.class);
+        
+        //assert a array
         JSONArray tmpJSONArray = new JSONArray();
+        
+        //loop throu the list and do a recursive call which returns an object with array inside
+        //the array consist of child comments of the current comment
         for (int i = 0; i < tmpList.size(); i++) {
             Post tmpP = tmpList.get(i);
             JSONObject tmpO = recursiveCall(tmpP);
             tmpJSONArray.add(tmpO);
         }
+        
+        //add the child comments and return the object
         o.put("ChildComments", tmpJSONArray);
         
         return o;
