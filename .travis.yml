@@ -22,7 +22,7 @@ before_install:
 - rm travis_rsa.enc
 - chmod 600 travis_rsa
 - mv travis_rsa  ~/.ssh/id_rsa
-- docker build -t abjdocker/hackernewscloneserver:101
+- docker build -t "abjdocker/hackernewscloneserver:101".
 - set +x
 install:
 - mvn -N io.takari:maven:wrapper
