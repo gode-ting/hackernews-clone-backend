@@ -19,8 +19,11 @@ env:
   before_install:
     - openssl aes-256-cbc -K $encrypted_c064a258234d_key -iv $encrypted_c064a258234d_iv
     - in travis_rsa.enc -out travis_rsa -d
-    - chmod +x mvnw
+    - chmod +x mvn
+    
   install:
+    - mvn -N io.takari:maven:wrapper
+    -  ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
     - docker build -t abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER".
     - set +x
     - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
