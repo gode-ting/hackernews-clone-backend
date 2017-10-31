@@ -46,8 +46,6 @@ public class PostRepositoryImpl implements PostInterface {
         }
         result.put("Comments", jsonArray);
         
-        System.out.println(result.toJSONString());
-        
         return result;
     }
     
