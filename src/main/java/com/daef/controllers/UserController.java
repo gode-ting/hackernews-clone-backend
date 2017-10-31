@@ -49,14 +49,14 @@ public class UserController {
 
         // 1. validate credentials
         if (!AuthUtil.credentialsAreValid(user)) {
-            return new ResponseEntity<>(AuthUtil.getErrorMessage(user), new HttpHeaders(), HttpStatus.OK);
+            return new ResponseEntity<>(AuthUtil.getErrorMessage(user), new HttpHeaders(), HttpStatus.BAD_REQUEST);
         }
         
         // 2. check if user already excists
         if (userRepository.findByUsername(user.getUsername()) != null) {
             JSONObject response = new JSONObject();
             response.put("message", "Username is already taken");
-            return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
+            return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.BAD_REQUEST);
         }
         
         // 3. hash password and update user
