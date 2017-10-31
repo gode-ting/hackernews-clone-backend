@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.daef.repositories.ApplicationUserRepository;
+import java.util.List;
+import org.json.simple.JSONObject;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
@@ -36,10 +42,14 @@ public class UserController {
         return "hello";
     }
     
+    
     @PostMapping("/signup")
-    public void signUp(@RequestBody ApplicationUser user) {
+    public ResponseEntity<JSONObject> signUp(@RequestBody ApplicationUser user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+        JSONObject response = new JSONObject();
+        response.put("message", "New user created");
+        return new ResponseEntity<>(response, new HttpHeaders(), HttpStatus.OK);
     }
     
 }

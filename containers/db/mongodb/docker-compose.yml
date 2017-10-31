@@ -1,6 +1,15 @@
 version: '2'
 
 services:  
+  
+ webserver: 
+ 
+    image: httpd:2.2
+    
+    ports: 
+        -8080:8080
+  
+  
   # Name our service will be known by
   mongoDb:
 
