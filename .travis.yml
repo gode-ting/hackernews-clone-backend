@@ -1,9 +1,9 @@
-sudo: required
+#sudo: required
 language: java
 jdk: 
 - oraclejdk8
-services:
-- docker
+#services:
+#- docker
 addons:
   ssh_known_hosts:
   - 46.101.190.192
@@ -24,7 +24,7 @@ env:
     
   install:
     - mvn -N io.takari:maven:wrapper
-    -  ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+    - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
     
     #- docker build -t abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER".
     #- set +x
