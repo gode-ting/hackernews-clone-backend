@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/signup")
 public class UserController {
     
     private ApplicationUserRepository userRepository;
@@ -44,7 +44,7 @@ public class UserController {
     }
     
     
-    @PostMapping("/signup")
+    @PostMapping()
     public ResponseEntity<JSONObject> signUp(@RequestBody ApplicationUser user) {
 
         // 1. validate credentials

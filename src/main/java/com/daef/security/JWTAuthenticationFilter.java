@@ -28,6 +28,7 @@ import static com.daef.security.SecurityConstants.EXPIRATION_TIME;
 import static com.daef.security.SecurityConstants.HEADER_STRING;
 import static com.daef.security.SecurityConstants.SECRET;
 import static com.daef.security.SecurityConstants.TOKEN_PREFIX;
+import java.util.HashMap;
 import org.springframework.security.core.userdetails.User;
 
 /**
@@ -45,7 +46,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req,
             HttpServletResponse res) throws AuthenticationException {
-        System.out.println("--------------- authentication ---------------");
+        System.out.println("--------------- authentication (attempting) ---------------");
         try {
             ApplicationUser creds = new ObjectMapper()
                     .readValue(req.getInputStream(), ApplicationUser.class);
@@ -68,7 +69,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             Authentication auth) throws IOException, ServletException {
         System.out.println("--------------- authentication (success) ---------------");
         
+        HashMap claims = new HashMap();
+        claims.put("username", ((User) auth.getPrincipal()).getUsername());
+        
         String token = Jwts.builder()
+                .setClaims(claims)
                 .setSubject(((User) auth.getPrincipal()).getUsername())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET.getBytes())

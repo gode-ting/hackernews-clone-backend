@@ -13,7 +13,7 @@ public class Constants {
     
     
     // Paging
-    public static final int PAGE_SIZE = 3;
+    public static final int PAGE_SIZE = 20;
     
     
     // Credentials
