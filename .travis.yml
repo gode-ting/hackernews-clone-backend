@@ -21,6 +21,11 @@ env:
     - docker build -t abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER".
     - set +x
  
+ # git strips the wrapper jar file so we have to force its download during the build
+install:
+- mvn -N io.takari:maven:wrapper
+- ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+ 
   after_success:
   - if [ "$TRAVIS_BRANCH" == "test" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
