@@ -39,8 +39,8 @@ public class Application implements CommandLineRunner {
         
        
         repository.deleteAll();
-        user.save(new ApplicationUser("admin", "password"));
-        user.save(new ApplicationUser("admin2", "password"));
+//        user.save(new ApplicationUser("admin", "password"));
+//        user.save(new ApplicationUser("admin2", "password"));
         // save a couple of articles
         //repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", -1, 10));
         //repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", -1, 2));
@@ -55,9 +55,9 @@ public class Application implements CommandLineRunner {
 //            System.out.println(post.PostText);
 //        });
 //        System.out.println();
-
-        System.out.println("----------");
-        repository.getAllChildPostByID(10);
+//
+//        System.out.println("----------");
+//        repository.getAllChildPostByID(10);
     }
     
     public static void main(String[] args) {
