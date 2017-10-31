@@ -131,27 +131,27 @@ In this section we will explain how we can esnure our endpoints in the most secu
 ## Understanding the post object we recieve
 ![PostObject](https://github.com/gode-ting/hackernews-clone-backend/blob/master/resources/PostObject.PNG)
 
-post_title (String): this is the title of a story. this is what will be listed on the frontpage of hackernews. only stories will have this field, incase that the post is a comment, this field will be empty.
+**post_title** (String): this is the title of a story. this is what will be listed on the frontpage of hackernews. only stories will have this field, incase that the post is a comment, this field will be empty.
 
-post_text (String): this field is used incase the  post is a comment, and will contain the comment itself. if the post is a story, then this field will be empty.
+**post_text** (String): this field is used incase the  post is a comment, and will contain the comment itself. if the post is a story, then this field will be empty.
 
-hansst_id (String): this is the identification of the post. this is what other post will refer to. for an example if they are a child to this post they will refer to the hansst_id in they post_parent.
+**hansst_id** (String): this is the identification of the post. this is what other post will refer to. for an example if they are a child to this post they will refer to the hansst_id in they post_parent.
 
-post_type (String): this defines wether the post is a comment, story, poll or a pollOpt. using string ["comment","story","poll","pollOpt"].
+**post_type** (String): this defines wether the post is a comment, story, poll or a pollOpt. using string ["comment","story","poll","pollOpt"].
 
-post_parent (String): this field is only used incase the post is a comment, and it will refer to the either story the original comment was commented on, or the comment that the original comment was commented on.
+**post_parent** (String): this field is only used incase the post is a comment, and it will refer to the either story the original comment was commented on, or the comment that the original comment was commented on.
 
-username (String): this is the post creators username.
+**username** (String): this is the post creators username.
 
-pwd_hash (String): this is the post creators hashed password.
+**pwd_hash** (String): this is the post creators hashed password.
 
-post_url (String): this is only used incase the Post is a story. this field will contain the stories link.
+**post_url** (String): this is only used incase the Post is a story. this field will contain the stories link.
 
 ## The Post object in our Database
 our post object is very similar to the object we will recieve, but we need to store the object with some extra information. which are as following:
 
-time_Stamp (date): this attribute is created when we recieve the post. we mark the time we recieved it, and save it within the object. this way we can keep track of "newest" post.
+**time_Stamp** (date): this attribute is created when we recieve the post. we mark the time we recieved it, and save it within the object. this way we can keep track of "newest" post.
 
-karma_points (int): this is the "point" which the post has. both comments and stories have karma.
+**karma_points** (int): this is the "point" which the post has. both comments and stories have karma.
 
 
