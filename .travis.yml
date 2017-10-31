@@ -34,4 +34,8 @@ after_success:
   fi
 
 deploy:
-- ssh builder@46.101.190.192 "./deploy2.sh $"TRAVIS_BUILD_NUMBER" abjdocker"  
+  - provider: script
+    skip_cleanup: true
+    script: ssh builder@46.101.190.192 "./deploy2.sh $"TRAVIS_BUILD_NUMBER" abjdocker"
+    on:
+      branch: test
