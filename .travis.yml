@@ -22,12 +22,13 @@ before_install:
 - rm travis_rsa.enc
 - chmod 600 travis_rsa
 - mv travis_rsa  ~/.ssh/id_rsa
-- docker build -t abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER" .
-- set +x
+
 install:
 - mvn -N io.takari:maven:wrapper
 - "./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 after_success:
+- docker build -t abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER" .
+- set +x
 - if [ "$TRAVIS_BRANCH" == "test" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   docker push abjdocker/hackernewscloneserver:$"TRAVIS_BUILD_NUMBER"; docker logout;
   fi
