@@ -10,5 +10,14 @@ package constants;
  * @author emilgras
  */
 public class Constants {
+    
+    
+    // Paging
     public static final int PAGE_SIZE = 3;
+    
+    
+    // Credentials
+    public static int MIN_PASSWORD_LENGTH = 8;
+    public static int MIN_USERNAME_LENGTH = 8;
+    
 }
