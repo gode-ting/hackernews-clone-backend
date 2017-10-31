@@ -37,14 +37,12 @@ public class PostRepositoryImpl implements PostInterface {
         //the first level of comments. the original comments on the post
         //NOT any comments on comments. yet.
         List<Post> list = mongoTemplate.find(query, Post.class);
-        
         //loop over the list of comments
         for (int i = 0; i < list.size(); i++) {
             Post p = list.get(i);
             JSONObject o = recursiveCall(p);
             jsonArray.add(o);
         }
-        
         //add the array to the result and return it
         result.put("Comments", jsonArray);
         
@@ -55,17 +53,17 @@ public class PostRepositoryImpl implements PostInterface {
         JSONObject o = new JSONObject();
         
         //set the posts variables to the JsonObject
-        o.put("HanesstID", p.HanesstID);
-        o.put("PostParent", p.PostParent);
-        o.put("PostText", p.PostText);
-        o.put("PostTitle", p.PostTitle);
-        o.put("PostType", p.PostType);
-        o.put("Pwd", p.Pwd);
+        o.put("HanesstID", p.hanesstID);
+        o.put("PostParent", p.postParent);
+        o.put("PostText", p.postText);
+        o.put("PostTitle", p.postTitle);
+        o.put("PostType", p.postType);
+        o.put("Pwd", p.pwd);
         o.put("id", p.id);
         o.put("userName", p.userName);
         
         //get all the comments to the parent
-        Query query = new Query(Criteria.where("PostParent").is(p.HanesstID));
+        Query query = new Query(Criteria.where("PostParent").is(p.hanesstID));
         
         //put into a list
         List<Post> tmpList = mongoTemplate.find(query, Post.class);
@@ -83,7 +81,6 @@ public class PostRepositoryImpl implements PostInterface {
         
         //add the child comments and return the object
         o.put("ChildComments", tmpJSONArray);
-        
         return o;
     }
     

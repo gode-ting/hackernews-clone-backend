@@ -23,25 +23,25 @@ public class Post {
     public String userName;
     
     @JsonProperty("post_type")
-    public String PostType;
+    public String postType;
     
     @JsonProperty("pwd_hash")
-    public String Pwd;
+    public String pwd;
     
     @JsonProperty("post_title")
-    public String PostTitle;
+    public String postTitle;
     
     @JsonProperty("post_text")
-    public String PostText;
+    public String postText;
     
     @JsonProperty("post_url")
-    public String URL;
+    public String url;
     
     @JsonProperty("post_parent")
-    public int PostParent;
+    public int postParent;
     
     @JsonProperty("hanesst_id")
-    public int HanesstID; 
+    public int hanesstID; 
      
     
 
@@ -56,17 +56,17 @@ public class Post {
 //     
 //    }
     
-//    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, String URL, int PostParent, int HanesstID) {
-//        this.userName = userName;
-//        this.PostType = PostType;
-//        this.Pwd = Pwd;
-//        this.PostTitle = PostTitle;
-//        this.PostText = PostText;
-//        this.URL = URL;
-//        this.PostParent = PostParent;
-//        this.HanesstID = HanesstID;
-//     
-//    }
+    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, String URL, int PostParent, int HanesstID) {
+        this.userName = userName;
+        this.postType = PostType;
+        this.pwd = Pwd;
+        this.postTitle = PostTitle;
+        this.postText = PostText;
+        this.url = URL;
+        this.postParent = PostParent;
+        this.hanesstID = HanesstID;
+     
+    }
 
     public Post(){
         
@@ -89,59 +89,59 @@ public class Post {
     }
 
     public String getPostType() {
-        return PostType;
+        return postType;
     }
 
     public void setPostType(String PostType) {
-        this.PostType = PostType;
+        this.postType = PostType;
     }
 
     public String getPwd() {
-        return Pwd;
+        return pwd;
     }
 
     public void setPwd(String Pwd) {
-        this.Pwd = Pwd;
+        this.pwd = Pwd;
     }
 
     public String getPostTitle() {
-        return PostTitle;
+        return postTitle;
     }
 
     public void setPostTitle(String PostTitle) {
-        this.PostTitle = PostTitle;
+        this.postTitle = PostTitle;
     }
 
     public String getPostText() {
-        return PostText;
+        return postText;
     }
 
     public void setPostText(String PostText) {
-        this.PostText = PostText;
+        this.postText = PostText;
     }
 
     public String getURL() {
-        return URL;
+        return url;
     }
 
     public void setURL(String URL) {
-        this.URL = URL;
+        this.url = URL;
     }
 
     public int getPostParent() {
-        return PostParent;
+        return postParent;
     }
 
     public void setPostParent(int PostParent) {
-        this.PostParent = PostParent;
+        this.postParent = PostParent;
     }
 
     public int getHanesstID() {
-        return HanesstID;
+        return hanesstID;
     }
 
     public void setHanesstID(int HanesstID) {
-        this.HanesstID = HanesstID;
+        this.hanesstID = HanesstID;
     }
     
     
