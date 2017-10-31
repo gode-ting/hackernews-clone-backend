@@ -19,12 +19,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource(collectionResourceRel = "post", path = "post")
 public interface PostRepository extends MongoRepository<Post, String>, PostInterface{
-   
-    
-    
+    public JSONObject getAllComments();
     public JSONObject getAllChildPostByID(int id);
-    
     public Post findPostByUserName(String userName);
-   
-
 }

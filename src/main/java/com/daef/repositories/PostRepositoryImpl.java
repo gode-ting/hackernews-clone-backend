@@ -16,6 +16,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+
 /**
  *
  * @author Frederik
@@ -24,34 +25,34 @@ public class PostRepositoryImpl implements PostInterface {
 
     @Autowired
     MongoTemplate mongoTemplate;
-    
+
     @Override
     public JSONObject getAllChildPostByID(int id) {
         //the query to use
         Query query = new Query(Criteria.where("HanesstID").is(id));
-        
+
         //result object. returns this in the end.
         JSONObject result = new JSONObject();
         JSONArray jsonArray = new JSONArray();
-        
+
         //the first level of comments. the original comments on the post
         //NOT any comments on comments. yet.
         List<Post> list = mongoTemplate.find(query, Post.class);
         //loop over the list of comments
         for (int i = 0; i < list.size(); i++) {
             Post p = list.get(i);
-            JSONObject o = recursiveCall(p);
+            JSONObject o = recursiveCallForGetAllChildPostByID(p);
             jsonArray.add(o);
         }
         //add the array to the result and return it
         result.put("Comments", jsonArray);
-        
+
         return result;
     }
-    
-    private JSONObject recursiveCall(Post p){
+
+    private JSONObject recursiveCallForGetAllChildPostByID(Post p) {
         JSONObject o = new JSONObject();
-        
+
         //set the posts variables to the JsonObject
         o.put("HanesstID", p.hanesstID);
         o.put("PostParent", p.postParent);
@@ -61,27 +62,63 @@ public class PostRepositoryImpl implements PostInterface {
         o.put("Pwd", p.pwd);
         o.put("id", p.id);
         o.put("userName", p.userName);
-        
+
         //get all the comments to the parent
         Query query = new Query(Criteria.where("PostParent").is(p.hanesstID));
-        
+
         //put into a list
         List<Post> tmpList = mongoTemplate.find(query, Post.class);
-        
+
         //assert a array
         JSONArray tmpJSONArray = new JSONArray();
-        
+
         //loop throu the list and do a recursive call which returns an object with array inside
         //the array consist of child comments of the current comment
         for (int i = 0; i < tmpList.size(); i++) {
             Post tmpP = tmpList.get(i);
-            JSONObject tmpO = recursiveCall(tmpP);
+            JSONObject tmpO = recursiveCallForGetAllChildPostByID(tmpP);
             tmpJSONArray.add(tmpO);
         }
-        
+
         //add the child comments and return the object
         o.put("ChildComments", tmpJSONArray);
         return o;
     }
-    
+
+    @Override
+    public JSONObject getAllComments() {
+        //the query to find all comments
+        Query query = new Query(Criteria.where("PostType").is("comment"));
+
+        //assert the result object and the array which will be in the result
+        JSONObject result = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+
+        //get all the posts form the database that are comments
+        List<Post> list = mongoTemplate.find(query, Post.class);
+
+        //loop throu the list
+        for (int i = 0; i < list.size(); i++) {
+            Post p = list.get(i);
+            JSONObject o = new JSONObject();
+
+            //set the posts variables to the JsonObject
+            o.put("HanesstID", p.hanesstID);
+            o.put("PostParent", p.postParent);
+            o.put("PostText", p.postText);
+            o.put("PostTitle", p.postTitle);
+            o.put("PostType", p.postType);
+            o.put("Pwd", p.pwd);
+            o.put("id", p.id);
+            o.put("userName", p.userName);
+            
+            //add the jsonObject to the jsonArray
+            jsonArray.add(o);
+        }
+        
+        //add the jsonArray to the result under "comments". and return result.
+        result.put("comments", jsonArray);
+        return result;
+    }
+
 }
