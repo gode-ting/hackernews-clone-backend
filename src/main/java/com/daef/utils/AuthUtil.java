@@ -23,6 +23,8 @@ public class AuthUtil {
     public static enum CredStatus {
         PASSWORD_TO_SHORT,
         USERNAME_TO_SHORT,
+        USERNAME_CONTAINS_WHITESPACE,
+        PASSWORD_CONTAINS_WHITESPACE,
         OK
     }
 
@@ -39,6 +41,9 @@ public class AuthUtil {
         switch (checkCredentials(user)) {
             case PASSWORD_TO_SHORT: message = "Password should be at least 8 characters"; break;          
             case USERNAME_TO_SHORT: message = "Username should be at least 8 characters"; break;
+            case USERNAME_CONTAINS_WHITESPACE: message = "Username may not contain spaces"; break;
+            case PASSWORD_CONTAINS_WHITESPACE: message = "Password may not contain spaces"; break;
+            
         }
         responseMessage.put("message", message);
         return responseMessage;
@@ -50,6 +55,12 @@ public class AuthUtil {
         }
         if (user.getUsername().length() < MIN_USERNAME_LENGTH) {
             return CredStatus.USERNAME_TO_SHORT;
+        }
+        if (user.getUsername().contains(" ")) {
+            return CredStatus.USERNAME_CONTAINS_WHITESPACE;
+        }
+        if (user.getPassword().contains(" ")) {
+            return CredStatus.PASSWORD_CONTAINS_WHITESPACE;
         }
         return CredStatus.OK;
     }
