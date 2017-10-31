@@ -21,6 +21,24 @@ In this project we are using Spring Framework
 The Spring Framework is an application framework and inversion of control container for the Java platform. The framework's core features can be used by any Java application,
 but there are extensions for building web applications on top of the Java EE (Enterprise Edition) platform.
 
+## Installation
+
+```sh 
+$ git clone https://github.com/gode-ting/hackernews-clone-backend.git
+```
+
+```sh
+$ cd hackernews-clone-backend
+```
+   
+## Running the project
+
+```sh
+$ vagrant up
+```  
+
+Next, run the main project in NetBenas and in your browser go to `http://localhost:8080`
+
 ## Accessing Data with MongoDB
 
 Define a simple model:
@@ -105,6 +123,29 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/common-applicatio
 
 
 TODO: Implement SQL DB
+
+## Implementing JWT authentication and authorization on Spring Boot API's
+
+In this section we will explain how we can esnure our endpoints in the most secure way using authentication tokens. Everything you will see here is inspired by this article: https://auth0.com/blog/implementing-jwt-authentication-on-spring-boot/
+
+## Understanding the post object we recieve
+![PostObject](https://github.com/gode-ting/hackernews-clone-backend/blob/master/resources/PostObject.PNG)
+
+post_title: this is the title of a story. this is what will be listed on the frontpage of hackernews. only stories will have this field, incase that the post is a comment, this field will be empty.
+
+post_text: this field is used incase the  post is a comment, and will contain the comment itself. if the post is a story, then this field will be empty.
+
+hansst_id: this is the identification of the post. this is what other post will refer to. for an example if they are a child to this post they will refer to the hansst_id in they post_parent.
+
+post_type: this defines wether the post is a comment, story, poll or a pollOpt. using string ["comment","story","poll","pollOpt"].
+
+post_parent: this field is only used incase the post is a comment, and it will refer to the either story the original comment was commented on, or the comment that the original comment was commented on.
+
+username: this is the post creators username.
+
+pwd_hash: this is the post creators hashed password.
+
+post_url: this is only used incase the Post is a story. this field will contain the stories link.
 
 
 

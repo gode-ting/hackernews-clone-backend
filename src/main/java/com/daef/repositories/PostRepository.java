@@ -4,8 +4,13 @@
  * and open the template in the editor.
  */
 package com.daef.repositories;
-import com.daef.models.Post;
 
+
+import com.daef.models.Post;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +18,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostRepository extends MongoRepository<Post, String> {
 
+   
+    
+    
+    
+    
     public Post findPostByUserName(String userName);
    
 
