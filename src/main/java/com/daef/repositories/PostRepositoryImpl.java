@@ -29,9 +29,9 @@ public class PostRepositoryImpl implements PostInterface {
     MongoTemplate mongoTemplate;
 
     @Override
-    public JSONObject getAllChildPostByID(int id) {
+    public JSONObject getAllChildPostByID(String id) {
         //the query to use
-        Query query = new Query(Criteria.where("HanesstID").is(id));
+        Query query = new Query(Criteria.where("id").is(id));
 
         //result object. returns this in the end.
         JSONObject result = new JSONObject();
@@ -66,7 +66,7 @@ public class PostRepositoryImpl implements PostInterface {
         o.put("userName", p.userName);
 
         //get all the comments to the parent
-        Query query = new Query(Criteria.where("PostParent").is(p.hanesstID));
+        Query query = new Query(Criteria.where("parent").is(p.hanesstID));
 
         //put into a list
         List<Post> tmpList = mongoTemplate.find(query, Post.class);

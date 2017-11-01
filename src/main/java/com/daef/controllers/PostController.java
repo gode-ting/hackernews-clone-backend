@@ -58,7 +58,7 @@ public class PostController {
     }
     
     @RequestMapping(value = "/comments", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> getCommentsByID(@RequestParam("id") int id) {
+    public ResponseEntity<JSONObject> getCommentsByID(@RequestParam("id") String id) {
         System.out.println("id: " + id);
         JSONObject obj = repository.getAllChildPostByID(id);
         System.out.println(obj.toJSONString());

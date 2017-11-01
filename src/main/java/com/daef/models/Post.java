@@ -42,6 +42,9 @@ public class Post {
     @JsonProperty("post_parent")
     public int postParent;
     
+    @JsonProperty("parent")
+    public String parent;
+    
     @JsonProperty("hanesst_id")
     public int hanesstID; 
     
@@ -69,14 +72,14 @@ public class Post {
 //     
 //    }
     
-    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, String URL, int PostParent, int HanesstID) {
+    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, String URL, String parent, int HanesstID) {
         this.userName = userName;
         this.postType = PostType;
         this.pwd = Pwd;
         this.postTitle = PostTitle;
         this.postText = PostText;
         this.url = URL;
-        this.postParent = PostParent;
+        this.parent = parent;
         this.hanesstID = HanesstID;
         this.upvotedBy = new ArrayList();
         this.downvotedBy = new ArrayList();
