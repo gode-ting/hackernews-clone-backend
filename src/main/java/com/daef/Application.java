@@ -49,11 +49,6 @@ public class Application implements CommandLineRunner {
         repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", "qw3dq34", 4));
         repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", "f34f3", 5));
           System.out.println("Up and running");
-        repository.upvotePost(2, "admin2");
-        repository.downvotePost(2, "admin");
-        repository.upvotePost(10, "admin2");
-        repository.upvotePost(10, "admin");
-        
         // fetch all articles
 //        System.out.println("Articles found with findAll():");
 //        System.out.println("-------------------------------");
