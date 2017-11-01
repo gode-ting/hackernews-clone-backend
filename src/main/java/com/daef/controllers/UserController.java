@@ -21,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -28,7 +29,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 
 @RestController
-@RequestMapping("/signup")
+@RequestMapping("/user")
 public class UserController {
     
     private ApplicationUserRepository userRepository;
@@ -40,12 +41,17 @@ public class UserController {
     }
     
     @GetMapping()
-    public String hello() {
-        return "hello";
+    public ResponseEntity<JSONObject> getProfile(@RequestParam("username") String username) {
+        ApplicationUser user = userRepository.findByUsername(username);
+        JSONObject jsonUser = new JSONObject();
+        jsonUser.put("username", user.getUsername());
+        jsonUser.put("karma", user.getKarma());
+        jsonUser.put("createdAt", user.getCreatedAt());
+        return new ResponseEntity<>(jsonUser, new HttpHeaders(), HttpStatus.OK);
     }
     
     
-    @PostMapping()
+    @PostMapping("/signup")
     public ResponseEntity<JSONObject> signUp(@RequestBody ApplicationUser user) {
 
         // 1. validate credentials
