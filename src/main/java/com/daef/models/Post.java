@@ -49,7 +49,9 @@ public class Post {
     
     @JsonProperty("downvotedBy")
     public ArrayList<String> downvotedBy; 
-     
+    
+    @JsonProperty("karma")
+    public int karma;
     
 
 //    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, int PostParent, int HanesstID) {
@@ -74,6 +76,7 @@ public class Post {
         this.hanesstID = HanesstID;
         this.upvotedBy = new ArrayList();
         this.downvotedBy = new ArrayList();
+        this.karma = 0;
     }
 
     public Post(){
@@ -88,6 +91,15 @@ public class Post {
         this.id = id;
     }
 
+    public int getKarma() {
+        return karma;
+    }
+
+    public void setKarma(int karma) {
+        this.karma = karma;
+    }
+
+    
     public String getUserName() {
         return userName;
     }
