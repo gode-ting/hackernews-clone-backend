@@ -52,10 +52,10 @@ public class PostController {
     }
     
     @RequestMapping(value = "/allComments", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> getComments() {
-        JSONObject obj = repository.getAllComments();
-        System.out.println(obj.toJSONString());
-        return new ResponseEntity<>(obj, new HttpHeaders(), HttpStatus.OK);
+    public ResponseEntity<JSONArray> getComments() {
+        JSONArray arr = repository.getAllComments();
+        System.out.println(arr.toJSONString());
+        return new ResponseEntity<>(arr, new HttpHeaders(), HttpStatus.OK);
     }
     
     @RequestMapping(value = "/comments", method = RequestMethod.GET)

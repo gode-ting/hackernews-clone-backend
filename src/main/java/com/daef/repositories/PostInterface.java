@@ -13,8 +13,12 @@ import org.json.simple.JSONObject;
  * @author Frederik
  */
 public interface PostInterface {
+
     public JSONArray getAllChildPostByID(String id);
-    public JSONObject getAllComments();
+
+    public JSONArray getAllComments();
+
     public void upvotePost(String id, String username);
+
     public void downvotePost(String id, String username);
 }

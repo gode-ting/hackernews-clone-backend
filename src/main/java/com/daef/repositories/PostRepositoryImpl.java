@@ -89,12 +89,11 @@ public class PostRepositoryImpl implements PostInterface {
     }
 
     @Override
-    public JSONObject getAllComments() {
+    public JSONArray getAllComments() {
         //the query to find all comments
         Query query = new Query(Criteria.where("PostType").is("comment"));
 
         //assert the result object and the array which will be in the result
-        JSONObject result = new JSONObject();
         JSONArray jsonArray = new JSONArray();
 
         //get all the posts form the database that are comments
@@ -118,10 +117,8 @@ public class PostRepositoryImpl implements PostInterface {
             //add the jsonObject to the jsonArray
             jsonArray.add(o);
         }
-        
-        //add the jsonArray to the result under "comments". and return result.
-        result.put("comments", jsonArray);
-        return result;
+
+        return jsonArray;
     }
 
     @Override
