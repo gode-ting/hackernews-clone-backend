@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -53,6 +54,9 @@ public class Post {
     @JsonProperty("karma")
     public int karma;
     
+    @JsonProperty("created_at")
+    public Date createdAt;
+    
 
 //    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, int PostParent, int HanesstID) {
 //        this.userName = userName;
@@ -89,6 +93,14 @@ public class Post {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public int getKarma() {
