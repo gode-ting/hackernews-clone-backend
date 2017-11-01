@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.daef.repositories.ApplicationUserRepository;
+import java.util.Date;
 import org.json.simple.JSONObject;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
@@ -40,8 +41,15 @@ public class Application implements CommandLineRunner {
         
        
         repository.deleteAll();
-        user.save(new ApplicationUser("admin", "password"));
-        user.save(new ApplicationUser("admin2", "password"));
+        ApplicationUser user1 = new ApplicationUser("admin", "password");
+        user1.setCreatedAt(new Date());
+        
+        ApplicationUser user2 = new ApplicationUser("admin2", "password");
+        user1.setCreatedAt(new Date());
+        
+        user.save(user1);
+        user.save(user2);
+
         // save a couple of articles
         repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", "", 10));
         repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", "", 2));
