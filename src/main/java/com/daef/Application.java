@@ -30,26 +30,26 @@ public class Application implements CommandLineRunner {
     
     @Override
     public void run(String... args) throws Exception {
-        user.deleteAll();
-        repository.deleteAll();
-        user.save(new ApplicationUser("admin", "password"));
-        user.save(new ApplicationUser("admin2", "password"));
-        // save a couple of articles
-        repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff", -1, 10));
-        repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff", -1, 2));
-
-        // fetch all articles
-        System.out.println("Articles found with findAll():");
-        System.out.println("-------------------------------");
-        repository.findAll().forEach((post) -> {
-            System.out.println(post.PostText);
-        });
-        System.out.println();
-
-        // fetch an individual article
-        System.out.println("Post found with findPostByUser(\"Charlie\")");
-        System.out.println("--------------------------------");
-        System.out.println(repository.findPostByUserName("Charlie").id);
+//        user.deleteAll();
+//        repository.deleteAll();
+//        user.save(new ApplicationUser("admin", "password"));
+//        user.save(new ApplicationUser("admin2", "password"));
+//        // save a couple of articles
+//        repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff", -1, 10));
+//        repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff", -1, 2));
+//
+//        // fetch all articles
+//        System.out.println("Articles found with findAll():");
+//        System.out.println("-------------------------------");
+//        repository.findAll().forEach((post) -> {
+//            System.out.println(post.PostText);
+//        });
+//        System.out.println();
+//
+//        // fetch an individual article
+//        System.out.println("Post found with findPostByUser(\"Charlie\")");
+//        System.out.println("--------------------------------");
+//        System.out.println(repository.findPostByUserName("Charlie").id);
 
     }
     
