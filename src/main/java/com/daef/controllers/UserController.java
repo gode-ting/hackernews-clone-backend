@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.daef.repositories.ApplicationUserRepository;
 import com.daef.utils.AuthUtil;
+import java.util.Date;
 import java.util.List;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpHeaders;
@@ -61,6 +62,7 @@ public class UserController {
         
         // 3. hash password and update user
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setCreatedAt(new Date());
         
         // 4. save user
         userRepository.save(user);
