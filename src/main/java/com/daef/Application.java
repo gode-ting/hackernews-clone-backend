@@ -22,9 +22,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 @EnableMongoRepositories("com.daef.repositories")
 @SpringBootApplication//(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
-
-
-@SpringBootApplication
 @EnableAutoConfiguration
 //(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
 
