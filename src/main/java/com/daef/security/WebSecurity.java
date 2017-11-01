@@ -34,11 +34,14 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
-//                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
 //                .antMatchers(HttpMethod.POST, "/api/**").permitAll()
 //                .antMatchers(HttpMethod.PUT, "/api/**").permitAll()
 //                .antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/users/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/post").permitAll()
+                .antMatchers(HttpMethod.POST, "api/post/comments/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
+                .antMatchers(HttpMethod.GET, "/user").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()

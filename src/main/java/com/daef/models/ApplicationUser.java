@@ -7,6 +7,7 @@ package com.daef.models;
 
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
+import java.util.Date;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -18,9 +19,11 @@ public class ApplicationUser {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private String id;
+    private Date createdAt;
     private String username;
     private String password;
-
+    private int karma;
+    
     public ApplicationUser() {
     }
     
@@ -33,6 +36,22 @@ public class ApplicationUser {
         return id;
     }
 
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+    
+    public int getKarma() {
+        return karma;
+    }
+
+    public void setKarma(int karma) {
+        this.karma = karma;
+    }
+    
     public String getUsername() {
         return username;
     }

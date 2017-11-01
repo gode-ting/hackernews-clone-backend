@@ -8,7 +8,11 @@ package com.daef.controllers;
 import com.daef.models.Post;
 import com.daef.repositories.PostRepository;
 import static constants.Constants.PAGE_SIZE;
+import java.util.Date;
 import java.util.List;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -43,17 +47,59 @@ public class PostController {
         System.out.println("page: " + page);
         PageRequest request = new PageRequest(page - 1, PAGE_SIZE, Sort.Direction.ASC, "timestamp");    
         List<Post> posts = repository.findAll(request).getContent();
+        System.out.println("POSTS: " + posts.get(0).toString());
         return new ResponseEntity<>(posts, new HttpHeaders(), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/allComments", method = RequestMethod.GET)
+    public ResponseEntity<JSONArray> getComments() {
+        JSONArray arr = repository.getAllComments();
+        System.out.println(arr.toJSONString());
+        return new ResponseEntity<>(arr, new HttpHeaders(), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/comments", method = RequestMethod.GET)
+    public ResponseEntity<JSONArray> getCommentsByID(@RequestParam("id") String id) {
+        System.out.println("id: " + id);
+        JSONArray arr = repository.getAllChildPostByID(id);
+        System.out.println(arr.toJSONString());
+        return new ResponseEntity<>(arr, new HttpHeaders(), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/vote", method = RequestMethod.POST)
+    public ResponseEntity<Void> vote(@RequestBody JSONObject data) {
+        String post_id = (String)data.get("post_id");
+        String username = (String)data.get("username");
+        String mode = (String)data.get("mode");
+        System.out.println("Post id: " + post_id);
+        System.out.println("Username: " + username);
+        System.out.println("mode: " + mode);
+        
+        switch(mode){
+            case "upvote":
+                repository.upvotePost(post_id, username);
+                break;
+            case "downvote":
+                repository.downvotePost(post_id, username);
+                break;
+        }
+        
+        return new ResponseEntity<>(new HttpHeaders(), HttpStatus.OK);
+    }
+    
+    
+    
     
     //CREATE
     //TESTING
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> createUser(@RequestBody Post post,UriComponentsBuilder ucBuilder) {
         //System.out.println("Creating Post " + post.userName);
- 
+        if (post == null) {
+            return new ResponseEntity<>(new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        }
+        post.setCreatedAt(new Date());
         repository.save(post);
- 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/post/{id}").buildAndExpand(post.id).toUri());
         return new ResponseEntity<>(headers, HttpStatus.CREATED);

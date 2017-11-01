@@ -11,17 +11,28 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.daef.repositories.ApplicationUserRepository;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Date;
+import org.json.simple.JSONObject;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 
 @EnableMongoRepositories("com.daef.repositories")
 @SpringBootApplication//(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
 
+
+@SpringBootApplication
+@EnableAutoConfiguration
+//(scanBasePackages = {"com.daef.repositories", "controllers","security","com.daef.models"})
+
 public class Application implements CommandLineRunner {
 
     @Autowired
     private PostRepository repository;
+    
     @Autowired
     private ApplicationUserRepository user;
     
@@ -29,30 +40,32 @@ public class Application implements CommandLineRunner {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
+  
     
     @Override
     public void run(String... args) throws Exception {
-//        user.deleteAll();
-//        repository.deleteAll();
-        //user.save(new ApplicationUser("admin", "password"));
-        //user.save(new ApplicationUser("admin2", "password"));
-//        // save a couple of articles
-        //repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff", -1, 10));
-        //repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff", -1, 2));
-//
-//        // fetch all articles
-//        System.out.println("Articles found with findAll():");
-//        System.out.println("-------------------------------");
-//        repository.findAll().forEach((post) -> {
-//            System.out.println(post.PostText);
-//        });
-//        System.out.println();
-//
-//        // fetch an individual article
-      //  System.out.println("Post found with findPostByUser(\"Charlie\"));
-//        System.out.println("--------------------------------");
-//        System.out.println(repository.findPostByUserName("Charlie").PostText);
 
+        user.deleteAll();
+        
+       
+        repository.deleteAll();
+        ApplicationUser user1 = new ApplicationUser("admin", "password");
+        user1.setCreatedAt(new Date());
+        
+        ApplicationUser user2 = new ApplicationUser("admin2", "password");
+        user1.setCreatedAt(new Date());
+        
+        user.save(user1);
+        user.save(user2);
+
+        // save a couple of articles
+        repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", "", 10));
+        repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", "", 2));
+        repository.save(new Post("Fred", "comment", "aioCQsy3E", "", "Bad  stuff 1","", "d23qdwe", 3));
+        repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", "qw3dq34", 4));
+        repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", "f34f3", 5));
+        System.out.println("Up and running");
+    repository.getAllChildPostByID(10);
     }
     
     public static void main(String[] args) {
