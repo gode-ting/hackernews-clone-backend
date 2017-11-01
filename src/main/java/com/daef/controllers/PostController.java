@@ -59,11 +59,11 @@ public class PostController {
     }
     
     @RequestMapping(value = "/comments", method = RequestMethod.GET)
-    public ResponseEntity<JSONArray> getCommentsByID(@RequestParam("id") String id) {
+    public ResponseEntity<JSONObject> getCommentsByID(@RequestParam("id") String id) {
         System.out.println("id: " + id);
-        JSONArray arr = repository.getAllChildPostByID(id);
-        System.out.println(arr.toJSONString());
-        return new ResponseEntity<>(arr, new HttpHeaders(), HttpStatus.OK);
+        JSONObject obj = repository.getAllChildPostByID(id);
+        System.out.println(obj.toJSONString());
+        return new ResponseEntity<>(obj, new HttpHeaders(), HttpStatus.OK);
     }
     
     @RequestMapping(value = "/vote", method = RequestMethod.POST)

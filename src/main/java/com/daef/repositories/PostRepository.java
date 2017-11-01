@@ -21,7 +21,7 @@ public interface PostRepository extends MongoRepository<Post, String>, PostInter
 
     public JSONArray getAllComments();
 
-    public JSONArray getAllChildPostByID(String id);
+    public JSONObject getAllChildPostByID(String id);
 
     public Post findPostByUserName(String userName);
 

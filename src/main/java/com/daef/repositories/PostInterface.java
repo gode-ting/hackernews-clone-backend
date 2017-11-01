@@ -14,7 +14,7 @@ import org.json.simple.JSONObject;
  */
 public interface PostInterface {
 
-    public JSONArray getAllChildPostByID(String id);
+    public JSONObject getAllChildPostByID(String id);
 
     public JSONArray getAllComments();
 
