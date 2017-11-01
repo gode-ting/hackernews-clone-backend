@@ -1,27 +1,36 @@
 sudo: required
-
 language: java
-jdk: oraclejdk8
-
+jdk:
+- oraclejdk8
 services:
-  - docker
-
+- docker
 addons:
   ssh_known_hosts:
-    - 46.101.190.192
-
+  - 46.101.190.192
 branches:
   only:
-    - test
-
+  - test
 env:
   global:
-    - REMOTE_APP_DIR = /var/www/hackernewsclone
-    - REMOTE_USER=builder
-    - REMOTE_HOST=46.101.190.192
-    - PORT=8080
-
+  - REMOTE_USER=builder
+  - REMOTE_HOST=46.101.190.192
+  - PORT=8080
+  - secure: 3mdBCMPWi0JD01FCtp9jTKyYnjeiWZhWRnE2Fx0Ij7spzncGhcjStgCxqw6SbG+oEyvpC0MVr2nKIVTokVPatbcj1vdxHTyxRQKVzc9Gh1Rg+L4nz7ht8QYoq0TVAvI6TpzkmykbXwvFN6XA/rAQZC9hKLivQ+MvSuvK8Xq06dzFEfj/DQ4vVa2T8UfmgYKJ/TMyY5dqZucEzQV4yRh5g4hPm3Fdbe3Gqub6k0e+GeqqLHMYy/DItJlIn+8s7PikggdR438PpjprEN/n2PWT6hr10K0j+yRIXbe0yjBWpfMNl8ksU4NFv5aoXYE4SSZnBk3UF1/aZztnBIKmuw/x9f7LpVDWsG6AAdsyOoQKL8AQTZXssALT1PY+hpDwmnqHkwlIutOfR6QfuayClx8QlY3am+isbvV+7iqaFJdDZztF8ktgvL+tuV/JbC3bxblcNSLfIZhpGhgfkN4REP3PHez5ecomsl7CgCKf0/Fj76EDhrvYLK2qTjoCarZ7PbbB0qodSYzD/JQzTHGD88dd22XRFr5cyhjqTTa8a+rNW5B4BoX/9IvU4D5PuKb5I+8jZ4oD0ImQBEXz0XV2RnbxYjiKhEX4/whd0ImZeMkKcPd+h5E8PFuo6/3sZDFUxXkgsJ5um+81QJkgA/7h7svIthKV+oChK1V3GOp5Aai0glk=
 before_install:
-  - chmod +x mvnw
+- openssl aes-256-cbc -K $encrypted_2b560cfeafab_key -iv $encrypted_2b560cfeafab_iv -in travis_rsa.enc -out travis_rsa -d
+- chmod +x mvnw
+- rm travis_rsa.enc
+- chmod 600 travis_rsa
+- mv travis_rsa  ~/.ssh/id_rsa
 
-install: true
+install:
+- mvn -N io.takari:maven:wrapper
+- "./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
+after_success:
+- docker build -t abjdocker/hackernewscloneserver:101 .
+- set +x
+- if [ "$TRAVIS_BRANCH" == "test" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  docker push abjdocker/hackernewscloneserver:101;
+  docker logout;
+  fi
+- ssh builder@46.101.190.192 "./deploy2.sh 101"
