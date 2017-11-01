@@ -42,25 +42,25 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        user.deleteAll();
+        //user.deleteAll();
         
        
-        repository.deleteAll();
-        ApplicationUser user1 = new ApplicationUser("admin", "password");
-        user1.setCreatedAt(new Date());
+        //repository.deleteAll();
+        //ApplicationUser user1 = new ApplicationUser("admin", "password");
+        //user1.setCreatedAt(new Date());
         
-        ApplicationUser user2 = new ApplicationUser("admin2", "password");
-        user1.setCreatedAt(new Date());
+        //ApplicationUser user2 = new ApplicationUser("admin2", "password");
+        //user1.setCreatedAt(new Date());
         
-        user.save(user1);
-        user.save(user2);
+        //user.save(user1);
+        //user.save(user2);
 
         // save a couple of articles
-        repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", "", 10));
-        repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", "", 2));
-        repository.save(new Post("Fred", "comment", "aioCQsy3E", "", "Bad  stuff 1","", "d23qdwe", 3));
-        repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", "qw3dq34", 4));
-        repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", "f34f3", 5));
+//        repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", "", 10));
+//        repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", "", 2));
+//        repository.save(new Post("Fred", "comment", "aioCQsy3E", "", "Bad  stuff 1","", "d23qdwe", 3));
+//        repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", "qw3dq34", 4));
+//        repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", "f34f3", 5));
         System.out.println("Up and running");
     //repository.getAllChildPostByID(10);
     }
