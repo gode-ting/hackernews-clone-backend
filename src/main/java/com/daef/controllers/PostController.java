@@ -65,6 +65,18 @@ public class PostController {
         return new ResponseEntity<>(obj, new HttpHeaders(), HttpStatus.OK);
     }
     
+    @RequestMapping(value = "/vote", method = RequestMethod.POST)
+    public ResponseEntity<Void> vote(@RequestBody JSONObject data) {
+        String post_id = (String)data.get("post_id");
+        String username = (String)data.get("username");
+        String mode = (String)data.get("mode");
+        System.out.println("Post id: " + post_id);
+        System.out.println("Username: " + username);
+        System.out.println("mode: " + mode);
+//        JSONObject obj = repository.getAllChildPostByID(id);
+        return new ResponseEntity<>(new HttpHeaders(), HttpStatus.OK);
+    }
+    
     
     
     
