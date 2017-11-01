@@ -47,6 +47,7 @@ public class PostRepositoryImpl implements PostInterface {
             jsonArray.add(o);
         }
         //add the array to the result and return it
+        result.put("original-post", list.get(0));
         result.put("Comments", jsonArray);
 
         return result;
