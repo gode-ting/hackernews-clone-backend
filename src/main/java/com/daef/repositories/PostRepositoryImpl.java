@@ -29,7 +29,7 @@ public class PostRepositoryImpl implements PostInterface {
     MongoTemplate mongoTemplate;
 
     @Override
-    public JSONObject getAllChildPostByID(String id) {
+    public JSONArray getAllChildPostByID(String id) {
         //the query to use
         Query query = new Query(Criteria.where("id").is(id));
 
@@ -47,9 +47,8 @@ public class PostRepositoryImpl implements PostInterface {
             jsonArray.add(o);
         }
         //add the array to the result and return it
-        result.put("Comments", jsonArray);
 
-        return result;
+        return jsonArray;
     }
 
     private JSONObject recursiveCallForGetAllChildPostByID(Post p) {

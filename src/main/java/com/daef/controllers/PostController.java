@@ -10,6 +10,7 @@ import com.daef.repositories.PostRepository;
 import static constants.Constants.PAGE_SIZE;
 import java.util.Date;
 import java.util.List;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,11 +59,11 @@ public class PostController {
     }
     
     @RequestMapping(value = "/comments", method = RequestMethod.GET)
-    public ResponseEntity<JSONObject> getCommentsByID(@RequestParam("id") String id) {
+    public ResponseEntity<JSONArray> getCommentsByID(@RequestParam("id") String id) {
         System.out.println("id: " + id);
-        JSONObject obj = repository.getAllChildPostByID(id);
-        System.out.println(obj.toJSONString());
-        return new ResponseEntity<>(obj, new HttpHeaders(), HttpStatus.OK);
+        JSONArray arr = repository.getAllChildPostByID(id);
+        System.out.println(arr.toJSONString());
+        return new ResponseEntity<>(arr, new HttpHeaders(), HttpStatus.OK);
     }
     
     @RequestMapping(value = "/vote", method = RequestMethod.POST)
