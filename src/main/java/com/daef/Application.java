@@ -43,11 +43,11 @@ public class Application implements CommandLineRunner {
         user.save(new ApplicationUser("admin", "password"));
         user.save(new ApplicationUser("admin2", "password"));
         // save a couple of articles
-        repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", -1, 10));
-        repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", -1, 2));
-        repository.save(new Post("Fred", "comment", "aioCQsy3E", "", "Bad  stuff 1","", 10, 3));
-        repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", 10, 4));
-        repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", 4, 5));
+        repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", "", 10));
+        repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", "", 2));
+        repository.save(new Post("Fred", "comment", "aioCQsy3E", "", "Bad  stuff 1","", "d23qdwe", 3));
+        repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", "qw3dq34", 4));
+        repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", "f34f3", 5));
           System.out.println("Up and running");
         repository.upvotePost(2, "admin2");
         repository.downvotePost(2, "admin");
