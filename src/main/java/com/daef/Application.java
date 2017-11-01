@@ -62,7 +62,7 @@ public class Application implements CommandLineRunner {
         repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", "qw3dq34", 4));
         repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", "f34f3", 5));
         System.out.println("Up and running");
-    repository.getAllChildPostByID(10);
+    //repository.getAllChildPostByID(10);
     }
     
     public static void main(String[] args) {
