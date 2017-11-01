@@ -7,6 +7,7 @@ package com.daef.repositories;
 
 
 import com.daef.models.Post;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -20,7 +21,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "post", path = "post")
 public interface PostRepository extends MongoRepository<Post, String>, PostInterface{
     public JSONObject getAllComments();
-    public JSONObject getAllChildPostByID(String id);
+    public JSONArray getAllChildPostByID(String id);
     public Post findPostByUserName(String userName);
     public void upvotePost(String id, String username);
     public void downvotePost(String id, String username);

@@ -5,6 +5,7 @@
  */
 package com.daef.repositories;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -12,7 +13,7 @@ import org.json.simple.JSONObject;
  * @author Frederik
  */
 public interface PostInterface {
-    public JSONObject getAllChildPostByID(String id);
+    public JSONArray getAllChildPostByID(String id);
     public JSONObject getAllComments();
     public void upvotePost(String id, String username);
     public void downvotePost(String id, String username);
