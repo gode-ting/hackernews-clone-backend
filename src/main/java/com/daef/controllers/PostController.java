@@ -8,6 +8,7 @@ package com.daef.controllers;
 import com.daef.models.Post;
 import com.daef.repositories.PostRepository;
 import static constants.Constants.PAGE_SIZE;
+import java.util.Date;
 import java.util.List;
 import org.json.simple.JSONObject;
 
@@ -72,6 +73,10 @@ public class PostController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Void> createUser(@RequestBody Post post,UriComponentsBuilder ucBuilder) {
         //System.out.println("Creating Post " + post.userName);
+        if (post == null) {
+            return new ResponseEntity<>(new HttpHeaders(), HttpStatus.BAD_REQUEST);
+        }
+        post.setCreatedAt(new Date());
         repository.save(post);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/post/{id}").buildAndExpand(post.id).toUri());
