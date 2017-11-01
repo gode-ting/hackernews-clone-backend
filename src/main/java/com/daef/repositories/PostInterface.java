@@ -14,6 +14,6 @@ import org.json.simple.JSONObject;
 public interface PostInterface {
     public JSONObject getAllChildPostByID(String id);
     public JSONObject getAllComments();
-    public void upvotePost(int id, String username);
-    public void downvotePost(int id, String username);
+    public void upvotePost(String id, String username);
+    public void downvotePost(String id, String username);
 }

@@ -124,10 +124,10 @@ public class PostRepositoryImpl implements PostInterface {
     }
 
     @Override
-    public void upvotePost(int id, String username){
+    public void upvotePost(String id, String username){
         
         //find the post by id
-         Query query = new Query(Criteria.where("hanesstID").is(id));
+         Query query = new Query(Criteria.where("id").is(id));
          Post p = mongoTemplate.findOne(query, Post.class);
          System.out.println("title: " + p.getPostTitle());
          
@@ -155,10 +155,10 @@ public class PostRepositoryImpl implements PostInterface {
     }
     
     @Override
-    public void downvotePost(int id, String username){
+    public void downvotePost(String id, String username){
         
         //find the post by id
-         Query query = new Query(Criteria.where("hanesstID").is(id));
+         Query query = new Query(Criteria.where("id").is(id));
          Post p = mongoTemplate.findOne(query, Post.class);
          System.out.println("title: " + p.getPostTitle());
          
