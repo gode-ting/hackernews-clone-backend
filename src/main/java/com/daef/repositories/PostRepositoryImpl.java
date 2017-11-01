@@ -47,6 +47,8 @@ public class PostRepositoryImpl implements PostInterface {
             jsonArray.add(o);
         }
         //add the array to the result and return it
+        result.put("original-post", list.get(0));
+        result.put("Comments", jsonArray);
 
         return jsonArray;
     }
@@ -128,8 +130,9 @@ public class PostRepositoryImpl implements PostInterface {
         //find the post by id
          Query query = new Query(Criteria.where("id").is(id));
          Post p = mongoTemplate.findOne(query, Post.class);
+         System.out.println("111");
          System.out.println("title: " + p.getPostTitle());
-         
+         System.out.println("2222");
          //find the user by hes username
          Query query2 = new Query(Criteria.where("username").is(username));
          ApplicationUser user = mongoTemplate.findOne(query2, ApplicationUser.class);
