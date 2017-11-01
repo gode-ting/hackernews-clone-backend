@@ -73,7 +73,16 @@ public class PostController {
         System.out.println("Post id: " + post_id);
         System.out.println("Username: " + username);
         System.out.println("mode: " + mode);
-//        JSONObject obj = repository.getAllChildPostByID(id);
+        
+        switch(mode){
+            case "upvote":
+                repository.upvotePost(post_id, username);
+                break;
+            case "downvote":
+                repository.downvotePost(post_id, username);
+                break;
+        }
+        
         return new ResponseEntity<>(new HttpHeaders(), HttpStatus.OK);
     }
     
