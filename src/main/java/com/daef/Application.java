@@ -40,8 +40,8 @@ public class Application implements CommandLineRunner {
         
        
         repository.deleteAll();
-//        user.save(new ApplicationUser("admin", "password"));
-//        user.save(new ApplicationUser("admin2", "password"));
+        user.save(new ApplicationUser("admin", "password"));
+        user.save(new ApplicationUser("admin2", "password"));
         // save a couple of articles
         repository.save(new Post("Charlie", "story", "aioCQsy3E", "Student Guide 101", "Cool stuff 0","", -1, 10));
         repository.save(new Post("Frank", "story", "aioCQsy3E", "Student Guide 102", "Bad  stuff","", -1, 2));
@@ -49,6 +49,11 @@ public class Application implements CommandLineRunner {
         repository.save(new Post("Phil", "comment", "aioCQsy3E", "", "dumb  stuff 2","", 10, 4));
         repository.save(new Post("Bent", "comment", "aioCQsy3E", "", "sick  stuff 3","", 4, 5));
           System.out.println("Up and running");
+        repository.upvotePost(2, "admin2");
+        repository.downvotePost(2, "admin");
+        repository.upvotePost(10, "admin2");
+        repository.upvotePost(10, "admin");
+        
         // fetch all articles
 //        System.out.println("Articles found with findAll():");
 //        System.out.println("-------------------------------");

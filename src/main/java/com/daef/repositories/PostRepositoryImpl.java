@@ -5,6 +5,7 @@
  */
 package com.daef.repositories;
 
+import com.daef.models.ApplicationUser;
 import com.daef.models.Post;
 import com.mongodb.WriteResult;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 
 /**
  *
@@ -121,4 +123,67 @@ public class PostRepositoryImpl implements PostInterface {
         return result;
     }
 
+    @Override
+    public void upvotePost(int id, String username){
+        
+        //find the post by id
+         Query query = new Query(Criteria.where("hanesstID").is(id));
+         Post p = mongoTemplate.findOne(query, Post.class);
+         System.out.println("title: " + p.getPostTitle());
+         
+         //find the user by hes username
+         Query query2 = new Query(Criteria.where("username").is(username));
+         ApplicationUser user = mongoTemplate.findOne(query2, ApplicationUser.class);
+         System.out.println("password: " + user.getPassword());
+         
+         //check if the user already upvoted this post
+         if(!p.upvotedBy.contains(user.getUsername())){
+             user.setKarma(user.getKarma() + 1);
+             p.upvotedBy.add(user.getUsername());
+             p.setKarma(p.getKarma() + 1);
+             if(p.downvotedBy.contains(user.getUsername())){
+                 p.downvotedBy.remove(user.getUsername());
+                 p.setKarma(p.getKarma() + 1);
+             }
+             mongoTemplate.save(p);
+             mongoTemplate.save(user);
+         } else {
+             System.out.println(user.getUsername() + " already upvoted that post");
+         }
+         
+         
+    }
+    
+    @Override
+    public void downvotePost(int id, String username){
+        
+        //find the post by id
+         Query query = new Query(Criteria.where("hanesstID").is(id));
+         Post p = mongoTemplate.findOne(query, Post.class);
+         System.out.println("title: " + p.getPostTitle());
+         
+         //find the user by hes username
+         Query query2 = new Query(Criteria.where("username").is(username));
+         ApplicationUser user = mongoTemplate.findOne(query2, ApplicationUser.class);
+         System.out.println("password: " + user.getPassword());
+         
+         //check if the user already upvoted this post
+         if(!p.downvotedBy.contains(user.getUsername())){
+             //user.setKarma(user.getKarma() + 1);
+             p.downvotedBy.add(user.getUsername());
+             p.setKarma(p.getKarma() - 1);
+             if(p.upvotedBy.contains(user.getUsername())){
+                 p.upvotedBy.remove(user.getUsername());
+                 user.setKarma(user.getKarma() - 1);
+                 p.setKarma(p.getKarma() - 1);
+             }
+             mongoTemplate.save(p);
+             mongoTemplate.save(user);
+         } else {
+             System.out.println(user.getUsername() + " already upvoted that post");
+         }
+         
+         
+    }
+    
 }

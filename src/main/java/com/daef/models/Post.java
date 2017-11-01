@@ -8,6 +8,7 @@ package com.daef.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.ArrayList;
 import org.springframework.data.annotation.Id;
 
 /**
@@ -42,7 +43,15 @@ public class Post {
     
     @JsonProperty("hanesst_id")
     public int hanesstID; 
-     
+    
+    @JsonProperty("upvotedBy")
+    public ArrayList<String> upvotedBy; 
+    
+    @JsonProperty("downvotedBy")
+    public ArrayList<String> downvotedBy; 
+    
+    @JsonProperty("karma")
+    public int karma;
     
 
 //    public Post(String userName, String PostType, String Pwd, String PostTitle, String PostText, int PostParent, int HanesstID) {
@@ -65,7 +74,9 @@ public class Post {
         this.url = URL;
         this.postParent = PostParent;
         this.hanesstID = HanesstID;
-     
+        this.upvotedBy = new ArrayList();
+        this.downvotedBy = new ArrayList();
+        this.karma = 0;
     }
 
     public Post(){
@@ -80,6 +91,15 @@ public class Post {
         this.id = id;
     }
 
+    public int getKarma() {
+        return karma;
+    }
+
+    public void setKarma(int karma) {
+        this.karma = karma;
+    }
+
+    
     public String getUserName() {
         return userName;
     }
