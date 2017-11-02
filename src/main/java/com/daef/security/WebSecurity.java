@@ -35,6 +35,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/api/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/").permitAll()
+                .antMatchers(HttpMethod.GET, "/hackerNews-clone-project-frontend/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/static/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/css/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/js/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/svg/**").permitAll()
 //                .antMatchers(HttpMethod.POST, "/api/**").permitAll()
 //                .antMatchers(HttpMethod.PUT, "/api/**").permitAll()
 //                .antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
