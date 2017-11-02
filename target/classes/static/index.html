@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackerNewz | Gode ting</title>
+    <meta name="description" content="Gode ting Cphbusiness Denmark school project">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link href="css/site.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <header class="page-header">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class="navbar-brand top-nav__link" id="top-nav__link-index" href="/hackerNews-clone-project-frontend/">Hacker Newz</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="navbar-collapse collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link top-nav__link" id="top-nav__link-comments" href="/hackerNews-clone-project-frontend/comments">comments</a></li>
+            <li class="nav-item"><a class="nav-link top-nav__link" id="top-nav__link-submit" href="/hackerNews-clone-project-frontend/submit">submit</a></li>
+          </ul><a class="link link--button link--login" id="loginButton" href="/hackerNews-clone-project-frontend/login">Login</a><a class="link link--button link--logout" id="logoutButton" href="/hackerNews-clone-project-frontend/" onclick="logoutUser()">Logout</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container" role="main">
+        <div id="divUnauthorized">
+          <div class="alert alert--error"><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>You're not authorized
+          </div>
+        </div>
+        <div id="divAuthorized">
+          <h1>Hacker Newz - Gode ting</h1>
+          <h3>recent posts</h3>
+          <table class="table" id="allPosts">
+            <tbody id="allPostsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <paragraph class="paragraph paragraph--centered"><span class="span">|</span><a class="link link--footer" href="https://github.com/gode-ting/HackerNews-api">API</a><span class="span">|</span>
+      </paragraph>
+    </footer>
+    
+    <script src="js/site.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

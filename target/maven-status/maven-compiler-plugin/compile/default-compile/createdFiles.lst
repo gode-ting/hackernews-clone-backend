@@ -5,6 +5,7 @@ com\daef\security\UserDetailsServiceImpl.class
 com\daef\security\WebConfig$1.class
 com\daef\repositories\ApplicationUserRepository.class
 com\daef\controllers\LatestDigestedPostController.class
+com\daef\NewServerHealth.class
 com\daef\security\SecurityConstants.class
 com\daef\utils\AuthUtil$CredStatus.class
 com\daef\models\Post.class
