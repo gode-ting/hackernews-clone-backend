@@ -43,26 +43,21 @@ public class PostController {
     
     //GET
     @GetMapping
-    public ResponseEntity<List> getAllPosts(@RequestParam("page") int page) {
-        System.out.println("page: " + page);
-        PageRequest request = new PageRequest(page - 1, PAGE_SIZE, Sort.Direction.ASC, "timestamp");    
-        List<Post> posts = repository.findAll(request).getContent();
-        System.out.println("POSTS: " + posts.get(0).toString());
+    public ResponseEntity<List> getAllPosts(/*@RequestParam("page") int page*/) {
+        //PageRequest request = new PageRequest(page - 1, PAGE_SIZE, Sort.Direction.ASC, "timestamp");    
+        List<Post> posts = repository.findAll();//findAll(request).getContent();
         return new ResponseEntity<>(posts, new HttpHeaders(), HttpStatus.OK);
     }
     
     @RequestMapping(value = "/allComments", method = RequestMethod.GET)
     public ResponseEntity<JSONArray> getComments() {
         JSONArray arr = repository.getAllComments();
-        System.out.println(arr.toJSONString());
         return new ResponseEntity<>(arr, new HttpHeaders(), HttpStatus.OK);
     }
     
     @RequestMapping(value = "/comments", method = RequestMethod.GET)
     public ResponseEntity<JSONObject> getCommentsByID(@RequestParam("id") String id) {
-        System.out.println("id: " + id);
         JSONObject obj = repository.getAllChildPostByID(id);
-        System.out.println(obj.toJSONString());
         return new ResponseEntity<>(obj, new HttpHeaders(), HttpStatus.OK);
     }
     
@@ -71,9 +66,6 @@ public class PostController {
         String post_id = (String)data.get("post_id");
         String username = (String)data.get("username");
         String mode = (String)data.get("mode");
-        System.out.println("Post id: " + post_id);
-        System.out.println("Username: " + username);
-        System.out.println("mode: " + mode);
         
         switch(mode){
             case "upvote":
