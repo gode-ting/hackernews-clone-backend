@@ -35,8 +35,10 @@ public class LatestDigestedPostController {
         List<Post> maxObject = repository.findAll(new Sort(Sort.Direction.DESC, "hanesstID"));
       
         //return "Hello";
-        return maxObject.get(0).getHanesstID();
-
-     
+         if (maxObject != null) {
+             return maxObject.get(0).getHanesstID();
+         }
+        
+         return 0;
     }
 }
