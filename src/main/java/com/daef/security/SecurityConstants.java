@@ -10,7 +10,7 @@ package com.daef.security;
  * @author emilgras
  */
 public class SecurityConstants {
-    public static final String SECRET = "SecretKeyToGenJWTs";
+    public static final String SECRET = "SecretKeyToGenJWTs"; // Bad idea to place it here - we know
     public static final long EXPIRATION_TIME = 864_000_000; // 10 days
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String HEADER_STRING = "Authorization";
