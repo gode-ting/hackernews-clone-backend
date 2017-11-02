@@ -32,13 +32,12 @@ public class LatestDigestedPostController {
     
      @RequestMapping(method = RequestMethod.GET)
     public int getLatest(){
-        List<Post> maxObject = repository.findAll(new Sort(Sort.Direction.DESC, "hanesstID"));
-      
-        //return "Hello";
-         if (maxObject != null) {
-             return maxObject.get(0).getHanesstID();
-         }
         
-         return 0;
+        
+        List<Post> maxObject = repository.findAll(new Sort(Sort.Direction.DESC, "hanesstID"));
+        
+        int latest = !maxObject.isEmpty() ?  maxObject.get(0).getHanesstID() : 0;
+        
+         return latest;
     }
 }
