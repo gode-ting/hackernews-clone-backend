@@ -11,7 +11,7 @@
   </head>
   <body>
     <header class="page-header">
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class="navbar-brand top-nav__link" id="top-nav__link-index" href="/hackerNews-clone-project-frontend/">Hacker Newz</a>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class="navbar-brand top-nav__link" id="top-nav__link-index" href="/">Hacker Newz</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="navbar-collapse collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
@@ -28,11 +28,20 @@
           </div>
         </div>
         <div id="divAuthorized">
-          <h1>Hacker Newz - Gode ting</h1>
-          <h3>recent posts</h3>
-          <table class="table" id="allPosts">
-            <tbody id="allPostsBody"></tbody>
-          </table>
+          <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm-7">
+              <div class="box box--userProfile">
+                <paragraph class="paragraph paragraph--username mb-3">User: <span class="span" id="userProfile"></span>
+                </paragraph>
+                <paragraph class="paragraph mb-3">Created: <span class="span" id="createdText"></span>
+                </paragraph>
+                <paragraph class="paragraph mb-3">Karma: <span class="span" id="karmaText"></span>
+                </paragraph>
+              </div>
+            </div>
+            <div class="col-sm"></div>
+          </div>
         </div>
       </div>
     </main>

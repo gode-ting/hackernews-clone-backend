@@ -11,7 +11,7 @@
   </head>
   <body>
     <header class="page-header">
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class="navbar-brand top-nav__link" id="top-nav__link-index" href="/hackerNews-clone-project-frontend/">Hacker Newz</a>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class="navbar-brand top-nav__link" id="top-nav__link-index" href="/">Hacker Newz</a>
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="navbar-collapse collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
@@ -28,11 +28,22 @@
           </div>
         </div>
         <div id="divAuthorized">
-          <h1>Hacker Newz - Gode ting</h1>
-          <h3>recent posts</h3>
-          <table class="table" id="allPosts">
-            <tbody id="allPostsBody"></tbody>
-          </table>
+          <h3 id="itemTitle">Item title</h3>
+          <paragraph class="paragraph paragraph--item mb-3">item info
+          </paragraph>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="itemComment"></label>
+                <textarea class="form-control" id="itemComment" rows="3"></textarea>
+              </div>
+            </div>
+            <div class="col-sm"></div>
+          </div>
+          <button class="mb-3 btn btn-primary" id="addComment" onclick="addComment()">Add comments</button>
+          <div class="row" id="allComments">
+            <div class="col-sm">test</div>
+          </div>
         </div>
       </div>
     </main>
