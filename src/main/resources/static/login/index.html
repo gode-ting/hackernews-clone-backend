@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackerNewz | Gode ting</title>
+    <meta name="description" content="Gode ting Cphbusiness Denmark school project">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.min.css">
+  </head>
+  <body>
+    <header class="page-header">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class="navbar-brand top-nav__link" id="top-nav__link-index" href="/">Hacker Newz</a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="navbar-collapse collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link top-nav__link" id="top-nav__link-comments" href="/hackerNews-clone-project-frontend/comments">comments</a></li>
+            <li class="nav-item"><a class="nav-link top-nav__link" id="top-nav__link-submit" href="/hackerNews-clone-project-frontend/submit">submit</a></li>
+          </ul><a class="link link--button link--login" id="loginButton" href="/login">Login</a><a class="link link--button link--logout" id="logoutButton" href="/" onclick="logoutUser()">Logout</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container" role="main">
+        <div id="divUnauthorized">
+          <div class="alert alert--error"><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>You're not authorized
+          </div>
+        </div>
+        <div id="divAuthorized">
+          <h1>Login</h1>
+          <div class="row">
+            <div class="col-sm">
+              <form id="login-form" name="login">
+                <div class="form-group">
+                  <input class="form-control" id="usernameLogin" type="text" aria-describedby="usernameHelp" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="passwordLogin" type="password" placeholder="Password" name="password" required><small class="form-text text-muted" id="usernameHelp">We"ll never share your credentials with anyone else.</small>
+                </div>
+                <button class="btn btn-primary" type="button" value="Submit" onClick="loginUser()">Login</button>
+              </form>
+            </div>
+            <div class="col-sm">
+              <div class="alert alert--error alert--hidden" id="loginError"><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>Something went wrong. Please try again
+              </div>
+              <div class="alert alert--success alert--hidden" id="loginSuccess"><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+              </div>
+            </div>
+          </div>
+          <hr class="hr hr--login-signup"/>
+          <h3>... Or create a new account</h3>
+          <div class="row">
+            <div class="col-sm">
+              <form id="signup-form" name="signup">
+                <div class="form-group">
+                  <input class="form-control" id="usernameSignup" type="text" aria-describedby="usernameHelp" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="passwordSignup" type="password" placeholder="Password" required><small class="form-text text-muted" id="usernameHelp">We"ll never share your credentials with anyone else.</small>
+                </div>
+                <button class="btn btn-primary" type="button" value="Submit" onClick="signupUser()">Signup</button>
+              </form>
+            </div>
+            <div class="col-sm">
+              <div class="alert alert--error alert--hidden" id="signupError"><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>Something went wrong. Please try again
+              </div>
+              <div class="alert alert--success alert--hidden" id="signupSuccess"><span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>Success! Successfully signed up
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <paragraph class="paragraph paragraph--centered"><span class="span">|</span><a class="link link--footer" href="https://github.com/gode-ting/HackerNews-api">API</a><span class="span">|</span>
+      </paragraph>
+    </footer>
+    <script src="/js/site.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
