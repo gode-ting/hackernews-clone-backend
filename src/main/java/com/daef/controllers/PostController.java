@@ -43,9 +43,11 @@ public class PostController {
     
     //GET
     @GetMapping
-    public ResponseEntity<List> getAllPosts(/*@RequestParam("page") int page*/) {
-        //PageRequest request = new PageRequest(page - 1, PAGE_SIZE, Sort.Direction.ASC, "timestamp");    
-        List<Post> posts = repository.findAll();//findAll(request).getContent();
+    public ResponseEntity<List> getAllPosts(@RequestParam("page") int page) {
+        PageRequest request = new PageRequest(page - 1, PAGE_SIZE, Sort.Direction.ASC, "timestamp");    
+        //List<Post> posts = repository.findAll();
+        
+        List<Post> posts = repository.findAll(request).getContent();
         if (posts.isEmpty()) {
             return new ResponseEntity<>(new JSONArray(), new HttpHeaders(), HttpStatus.OK);
         }
