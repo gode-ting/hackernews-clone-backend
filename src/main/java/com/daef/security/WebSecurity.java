@@ -44,7 +44,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 //                .antMatchers(HttpMethod.POST, "/api/**").permitAll()
 //                .antMatchers(HttpMethod.PUT, "/api/**").permitAll()
 //                .antMatchers(HttpMethod.DELETE, "/api/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/post").permitAll()
+                .antMatchers(HttpMethod.POST, "/post").access("hasIpAddress('138.68.91.198')")
                 .antMatchers(HttpMethod.GET, "/status").permitAll()
                 .antMatchers(HttpMethod.GET, "/latest").permitAll()
                 .antMatchers(HttpMethod.POST, "api/post/comments/**").permitAll()
